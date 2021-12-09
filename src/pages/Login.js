@@ -26,7 +26,7 @@ function Login() {
   };
 
   const setToLocalStorage = () => {
-    localStorage.setItem('email', JSON.stringify({
+    localStorage.setItem('user', JSON.stringify({
       email,
     }));
     localStorage.setItem('mealsToken', JSON.stringify(1));
