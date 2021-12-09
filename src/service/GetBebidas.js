@@ -1,41 +1,37 @@
-export async function getApiBebidas() {
-  const APIBebibdas = 'https://www.thecocktaildb.com/apijson/v1/1/list.php?a=list';
+export async function getCategoriaBebidas() { // testada!
+  const APIBebibdas = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
   const data = await fetch(APIBebibdas);
   const dataJson = await data.json();
-  const { bebidas } = dataJson;
-  return bebidas;
+  console.log(dataJson);
+  const { drinks } = dataJson; // retorno da API - chave drinks
+  return drinks;
 }
 
-export async function getCategoriaBebidas() {
-  const CategoriaBebida = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
-  const data = await fetch(CategoriaBebida);
-  const dataJson = await data.json();
-  const { CategoriaBebidas } = dataJson;
-  return CategoriaBebidas;
-}
-
-export async function getBebidasID() {
-  const RequisicaoBebidas = 'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i={id-da-receita}';
+export async function getBebidasID(iDReceita) { // testada!
+  const RequisicaoBebidas = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${iDReceita}`;
   const data = await fetch(RequisicaoBebidas);
   const dataJson = await data.json();
-  const { bebidasIDReceita } = dataJson;
-  return bebidasIDReceita;
+  console.log(dataJson);
+  const { drinks } = dataJson; // retorno da API - chave drinks
+  return drinks;
 }
 
-export async function getBuscaBebidas() {
+export async function getBuscaBebidas() { // testada!
   const BebidasSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
   const data = await fetch(BebidasSearch);
   const dataJson = await data.json();
-  const { bebidasBusca } = dataJson;
-  return bebidasBusca;
+  console.log(dataJson);
+  const { drinks } = dataJson; // retorno da API - chave drinks
+  return drinks;
 }
 
-export async function getRandonBebidas() {
+export async function getRandonBebidas() { // testada! 
   const BebidasRanron = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
   const data = await fetch(BebidasRanron);
   const dataJson = await data.json();
-  const { bebidaSurpresa } = dataJson;
-  return bebidaSurpresa;
+  console.log(dataJson);
+  const { drinks } = dataJson; // retorno da API - chave drinks
+  return drinks;
 }
 /*
 API Methods using the developer test key '1' as the API key
