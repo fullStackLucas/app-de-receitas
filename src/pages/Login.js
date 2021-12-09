@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validate, setValidate] = useState(true);
+  const history = useHistory();
 
   const isValidEmail = (login) => login.match(/^[\w.]+@[\w.]+\w+\.\w+$/);
 
@@ -21,6 +23,15 @@ function Login() {
   const handleLogin = (event) => {
     setEmail(event.target.value);
     validateLogin();
+  };
+
+  const setToLocalStorage = () => {
+    localStorage.setItem('email', JSON.stringify({
+      email,
+    }));
+    localStorage.setItem('mealsToken', JSON.stringify(1));
+    localStorage.setItem('cocktailsToken', JSON.stringify(1));
+    history.push('./comidas');
   };
 
   return (
@@ -43,6 +54,7 @@ function Login() {
           type="button"
           data-testid="login-submit-btn"
           disabled={ validate }
+          onClick={ setToLocalStorage }
         >
           Entrar
         </button>
