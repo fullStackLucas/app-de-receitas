@@ -2,7 +2,11 @@ import React from 'react';
 
 function Header() {
   return (
-    <div>Header</div>
+    <header>
+      <h2 data-testid="page-title">Título da Página</h2>
+      <button type="button" data-testid="profile-top-button">Perfil</button>
+      <button type="button" data-testid="search-top-button">Busca</button>
+    </header>
   );
 }
 
