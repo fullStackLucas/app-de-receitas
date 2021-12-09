@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import Header from '../components/Header';
+import Search from '../components/Search';
+import Context from '../context/Context';
 
 function Comidas() {
+  const { isSearchAvaliable } = useContext(Context);
   return (
-    <div>Comidas</div>
+    <div>
+      <Header title="Comidas" />
+      { isSearchAvaliable && <Search /> }
+    </div>
   );
 }
 

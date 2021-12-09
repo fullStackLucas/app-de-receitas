@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function ReceitasFavoritas() {
   return (
-    <div>ReceitasFavoritas</div>
+    <Header
+      title="Receitas Favoritas"
+      btnAvaliable={ false }
+    />
   );
 }
 
