@@ -1,73 +1,89 @@
-export async function getImagensComidas() {
-  const Imagens = 'https://www.themealdb.com/images/ingredients/{ingrediente}.png';
-  const data = await fetch(Imagens);
+/* erro - formato invalido.
+export function getImagensComidas(ingrediente) {
+  const Imagens = `https://www.themealdb.com/images/ingredients/${ingrediente}.png`;
+  const data = await fetch();
   const dataJson = await data.json();
-  const { imagensComida } = dataJson;
-  return imagensComida;
-}
+  console.log(dataJson);
 
+} */
+
+// testada e funcionando.
 export async function getComidasArea() {
   const APIComidas = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
   const data = await fetch(APIComidas);
   const dataJson = await data.json();
-  const { comidasArea } = dataJson;
-  return comidasArea;
+  console.log(dataJson);
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
 }
 
-export async function getComidaIngrediente() {
-  const Ingrediente = 'https://www.themealdb.com/api/json/v1/1/filter.php?i={ingrediente}';
+// testada e funcionando.
+export async function getComidaIngrediente(ingrediente) {
+  const Ingrediente = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediente}`;
   const data = await fetch(Ingrediente);
   const dataJson = await data.json();
-  const { ingrediente } = dataJson;
-  return ingrediente;
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
 }
 
-export async function getComidaNome() {
-  const Nome = 'https://www.themealdb.com/api/json/v1/1/search.php?s={nome}';
+// testada e funcionando.
+export async function getComidaNome(nome) {
+  const Nome = `https://www.themealdb.com/api/json/v1/1/search.php?s=${nome}`;
   const data = await fetch(Nome);
   const dataJson = await data.json();
-  const { nomeComida } = dataJson;
-  return nomeComida;
+  console.log(dataJson);
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
 }
 
-export async function getComidaLetra() {
-  const PrimeiraLetra = 'https://www.themealdb.com/api/json/v1/1/search.php?f={primeira-letra}';
+// testada e funcionando.
+export async function getComidaLetra(primeiraLetra) {
+  const PrimeiraLetra = `https://www.themealdb.com/api/json/v1/1/search.php?f=${primeiraLetra}`;
   const data = await fetch(PrimeiraLetra);
   const dataJson = await data.json();
-  const { comidaLetra } = dataJson;
-  return comidaLetra;
+  console.log(dataJson);
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
 }
 
+// testada e funcionando
 export async function getCategoriaComidas() {
   const CategoriaComida = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
   const data = await fetch(CategoriaComida);
   const dataJson = await data.json();
-  const { CategoriaComidas } = dataJson;
-  return CategoriaComidas;
+  console.log(dataJson);
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
 }
 
-export async function getReceitasID() {
-  const RequisicaoComidas = 'https://www.themealdb.com/api/json/v1/1/lookup.php?i={id-da-receita}';
+// testada e funcionando
+export async function getReceitasID(IdComida) {
+  const RequisicaoComidas = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${IdComida}`;
   const data = await fetch(RequisicaoComidas);
   const dataJson = await data.json();
-  const { comidasIDReceita } = dataJson;
-  return comidasIDReceita;
+  console.log(dataJson);
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
 }
 
+// testada e funcionando
 export async function getBuscaComidas() {
   const ComidasSearch = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
   const data = await fetch(ComidasSearch);
   const dataJson = await data.json();
-  const { comidasBusca } = dataJson;
-  return comidasBusca;
+  console.log(dataJson);
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
 }
 
+// testado e funcionando
 export async function getRandonComidas() {
   const ComidasRandon = 'https://www.themealdb.com/api/json/v1/1/random.php';
   const data = await fetch(ComidasRandon);
   const dataJson = await data.json();
-  const { comidaSurpresa } = dataJson;
-  return comidaSurpresa;
+  console.log(dataJson);
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
 }
 
 /* API Methods using the developer test key '1' as the API key
