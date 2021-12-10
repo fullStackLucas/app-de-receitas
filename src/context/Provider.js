@@ -4,13 +4,16 @@ import Context from './Context';
 
 function Provider({ children }) {
   const [isSearchAvaliable, toggleSearch] = useState(false);
-  const [dataInput, setDataInput] = useState([]);
+  const [dataMeals, setDataMeals] = useState([]);
+  const [dataDrinks, setDataDrinks] = useState([]);
 
   const contextValue = {
     isSearchAvaliable,
     toggleSearch,
-    setDataInput,
-    dataInput,
+    setDataMeals,
+    dataMeals,
+    setDataDrinks,
+    dataDrinks,
   };
 
   return (
