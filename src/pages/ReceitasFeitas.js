@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function ReceitasFeitas() {
   return (
-    <div>ReceitasFeitas</div>
+    <Header
+      title="Receitas Feitas"
+      btnAvaliable={ false }
+    />
   );
 }
 

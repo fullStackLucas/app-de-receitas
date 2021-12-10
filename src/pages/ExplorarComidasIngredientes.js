@@ -1,8 +1,12 @@
 import React from 'react';
+import Header from '../components/Header';
 
 function ExplorarComidasIngredientes() {
   return (
-    <div>ExplorarComidasIngredientes</div>
+    <Header
+      title="Explorar Ingredientes"
+      btnAvaliable={ false }
+    />
   );
 }
 

@@ -5,8 +5,13 @@ import Context from './Context';
 
 function Provider({ children }) {
   const [stateA, setStateA] = useState('initialStateA');
+  const [isSearchAvaliable, toggleSearch] = useState(false);
+
   const contextValue = {
-    stateA, setStateA,
+    stateA,
+    setStateA,
+    isSearchAvaliable,
+    toggleSearch,
   };
 
   return (
