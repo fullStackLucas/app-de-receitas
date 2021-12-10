@@ -12,7 +12,6 @@ function Login() {
   const validateLogin = () => {
     const PASSWORD_LENGTH = 6;
     setValidate(!(password.length >= PASSWORD_LENGTH && isValidEmail(email)));
-    console.log(validate);
   };
 
   const handlePassword = (event) => {
