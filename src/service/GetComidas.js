@@ -7,6 +7,8 @@ export function getImagensComidas(ingrediente) {
 
 } */
 
+const alerta = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
+
 // testada e funcionando.
 export async function getComidasArea() {
   const APIComidas = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
@@ -19,14 +21,19 @@ export async function getComidasArea() {
 
 // testada e funcionando.
 export async function getComidaIngrediente(ingrediente) {
-  const Ingrediente = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediente}`;
-  const data = await fetch(Ingrediente);
-  const dataJson = await data.json();
-  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
-  return meals;
+  try {
+    const Ingrediente = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediente}`;
+    const data = await fetch(Ingrediente);
+    const dataJson = await data.json();
+    const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+    if (!meals) global.alert(alerta);
+    return meals;
+  } catch (error) {
+    global.alert(alerta);
+  }
 }
 
-// testada e funcionando.
+/* // testada e funcionando.
 export async function getComidaNome(nome) {
   const Nome = `https://www.themealdb.com/api/json/v1/1/search.php?s=${nome}`;
   const data = await fetch(Nome);
@@ -35,15 +42,19 @@ export async function getComidaNome(nome) {
   const { meals } = dataJson; // a chave que chega nessa requisição é meals.
   return meals;
 }
-
+ */
 // testada e funcionando.
-export async function getComidaLetra(primeiraLetra) {
-  const PrimeiraLetra = `https://www.themealdb.com/api/json/v1/1/search.php?f=${primeiraLetra}`;
-  const data = await fetch(PrimeiraLetra);
-  const dataJson = await data.json();
-  console.log(dataJson);
-  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
-  return meals;
+export async function getComidaNomeLetra(input, radio) {
+  try {
+    const PrimeiraLetra = `https://www.themealdb.com/api/json/v1/1/search.php?${radio}=${input}`;
+    const data = await fetch(PrimeiraLetra);
+    const dataJson = await data.json();
+    const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+    if (!meals) global.alert(alerta);
+    return meals;
+  } catch (error) {
+    global.alert(alerta);
+  }
 }
 
 // testada e funcionando

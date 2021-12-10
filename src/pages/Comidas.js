@@ -8,7 +8,7 @@ function Comidas() {
   return (
     <div>
       <Header title="Comidas" />
-      { isSearchAvaliable && <Search /> }
+      { isSearchAvaliable && <Search title="Comidas" /> }
     </div>
   );
 }
