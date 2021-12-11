@@ -1,6 +1,6 @@
 /* Modelos que podem ser usados: https://freefrontend.com/css-cards/ */
 
-/* O classe em Bebidas.js e Comidas.js */
+/* Classe em Bebidas.js e Comidas.js */
 .cards {
   display: grid;
   gap: 1rem;
@@ -10,9 +10,9 @@
   padding: 0;
 }
 
-/* O classes em Cards.js */
+/* Classes em Cards.js */
 .card {
-  border-radius: calc(var(--curve) * 1px);
+  border-radius: 20px;
   display: block;
   height: 100%;
   overflow: hidden;
@@ -30,4 +30,21 @@
   color: #6a515e;
   font-size: 1em;
   margin: 0 0 0.3em;
+}
+
+/* Opcional: div que aparecece ao passar o mouse */
+.card_overlay {
+  background-color: rgb(193, 171, 194);
+  border-radius: 20px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: translateY(100%);
+  transition: 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.card:hover .card_overlay {
+  transform: translateY(0);
 }

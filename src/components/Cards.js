@@ -17,6 +17,9 @@ function Cards({ item, index }) {
         src={ item[`str${food}Thumb`] }
         data-testid={ `${index}-card-img` }
       />
+      <div className="card_overlay">
+        {item.strCategory}
+      </div>
     </div>
   );
 

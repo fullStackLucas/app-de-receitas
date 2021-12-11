@@ -32,10 +32,6 @@ function Search({ title }) {
     }
   };
 
-  const onChangeValue = (event) => {
-    setRadioValue(event.target.value);
-  };
-
   return (
     <form onSubmit={ formSubmit }>
       <input
@@ -44,7 +40,7 @@ function Search({ title }) {
         type="text"
         onChange={ ({ target }) => { setInputValue(target.value); } }
       />
-      <div onChange={ onChangeValue }>
+      <div onChange={ ({ target }) => { setRadioValue(target.value); } }>
         <label htmlFor="ingredient-radio">
           <input
             type="radio"
