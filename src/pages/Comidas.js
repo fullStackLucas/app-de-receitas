@@ -12,9 +12,11 @@ function Comidas() {
     <div>
       <Header title="Comidas" />
       { isSearchAvaliable && <Search title="Comidas" /> }
-      {meals.map((meal, index) => (
-        <Cards item={ meal } index={ index } key={ meal.idMeals } />
-      ))}
+      <div className="cards">
+        {meals.map((meal, index) => (
+          <Cards item={ meal } index={ index } key={ meal.idMeals } />
+        ))}
+      </div>
     </div>
   );
 }

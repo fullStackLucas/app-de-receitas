@@ -1,11 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../style/cards.css';
 
 function Cards({ item, index }) {
   const renderCards = (food) => (
-    <div data-testid={ `${index}-recipe-card` }>
-      <p data-testid={ `${index}-card-name` }>{ item[`str${food}`] }</p>
+    <div className="card" data-testid={ `${index}-recipe-card` }>
+      <p
+        className="card_name"
+        data-testid={ `${index}-card-name` }
+      >
+        { item[`str${food}`] }
+      </p>
       <img
+        className="card_img"
         alt={ item[`str${food}`] }
         src={ item[`str${food}Thumb`] }
         data-testid={ `${index}-card-img` }

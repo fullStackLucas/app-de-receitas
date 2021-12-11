@@ -13,9 +13,11 @@ function Bebidas() {
     <div>
       <Header title="Bebidas" />
       { isSearchAvaliable && <Search title="Bebidas" /> }
-      {drinks.map((drink, index) => (
-        <Cards item={ drink } index={ index } key={ drink.idDrink } />
-      ))}
+      <div className="cards">
+        {drinks.map((drink, index) => (
+          <Cards item={ drink } index={ index } key={ drink.idDrink } />
+        ))}
+      </div>
 
     </div>
   );
