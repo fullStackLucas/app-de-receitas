@@ -21,7 +21,7 @@
 }
 
 .card_img {
-  height: auto;
+  height: 100%;
   width: 100%;
 }
 
@@ -34,7 +34,7 @@
 
 /* Opcional: div que aparecece ao passar o mouse */
 .card_overlay {
-  background-color: rgb(193, 171, 194);
+  background-color: rgba(193, 171, 194, 0.603);
   border-radius: 20px;
   bottom: 0;
   left: 0;
