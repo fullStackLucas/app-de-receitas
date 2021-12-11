@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router';
 import Context from '../context/Context';
 import { getBebidasIngrediente, getBebidasNomeLetra } from '../service/GetBebidas';
 import { getComidaIngrediente, getComidaNomeLetra } from '../service/GetComidas';
@@ -7,7 +8,8 @@ import { getComidaIngrediente, getComidaNomeLetra } from '../service/GetComidas'
 function Search({ title }) {
   const [inputValue, setInputValue] = useState('');
   const [radioValue, setRadioValue] = useState('');
-  const { setDataInput } = useContext(Context);
+  const { setDataMeals, setDataDrinks } = useContext(Context);
+  const history = useHistory();
 
   const formSubmit = async (event) => {
     event.preventDefault();
@@ -18,19 +20,16 @@ function Search({ title }) {
       const response = radioValue === 'i'
         ? await getComidaIngrediente(inputValue)
         : await getComidaNomeLetra(inputValue, radioValue);
-      await setDataInput(response);
+      if (response.length === 1) history.push(`/comidas/${response[0].idMeal}`);
+      await setDataMeals(response);
     }
     if (title === 'Bebidas') {
       const response = radioValue === 'i'
         ? await getBebidasIngrediente(inputValue)
         : await getBebidasNomeLetra(inputValue, radioValue);
-      await setDataInput(response);
-      console.log(response);
+      if (response.length === 1) history.push(`/bebidas/${response[0].idDrink}`);
+      await setDataDrinks(response);
     }
-  };
-
-  const onChangeValue = (event) => {
-    setRadioValue(event.target.value);
   };
 
   return (
@@ -41,7 +40,7 @@ function Search({ title }) {
         type="text"
         onChange={ ({ target }) => { setInputValue(target.value); } }
       />
-      <div onChange={ onChangeValue }>
+      <div onChange={ ({ target }) => { setRadioValue(target.value); } }>
         <label htmlFor="ingredient-radio">
           <input
             type="radio"
