@@ -12,14 +12,13 @@ function Comidas() {
   return (
     <div>
       <Header title="Comidas" />
-      { isSearchAvaliable && <Search /> }
-      <Footer/>
       { isSearchAvaliable && <Search title="Comidas" /> }
       <div className="cards">
         {meals.map((meal, index) => (
           <Cards item={ meal } index={ index } key={ meal.idMeals } />
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
