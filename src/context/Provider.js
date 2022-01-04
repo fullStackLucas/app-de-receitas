@@ -1,17 +1,19 @@
-// Arquivo Base( não está sendo utilizado)
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Context from './Context';
 
 function Provider({ children }) {
-  const [stateA, setStateA] = useState('initialStateA');
   const [isSearchAvaliable, toggleSearch] = useState(false);
+  const [dataMeals, setDataMeals] = useState([]);
+  const [dataDrinks, setDataDrinks] = useState([]);
 
   const contextValue = {
-    stateA,
-    setStateA,
     isSearchAvaliable,
     toggleSearch,
+    setDataMeals,
+    dataMeals,
+    setDataDrinks,
+    dataDrinks,
   };
 
   return (

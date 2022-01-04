@@ -1,0 +1,50 @@
+/* Modelos que podem ser usados: https://freefrontend.com/css-cards/ */
+
+/* Classe em Bebidas.js e Comidas.js */
+.cards {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  list-style-type: none;
+  margin: 4rem 5vw;
+  padding: 0;
+}
+
+/* Classes em Cards.js */
+.card {
+  border-radius: 20px;
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.card_img {
+  height: 100%;
+  width: 100%;
+}
+
+.card_name {
+  background-color: gainsboro;
+  color: #6a515e;
+  font-size: 1em;
+  margin: 0 0 0.3em;
+}
+
+/* Opcional: div que aparecece ao passar o mouse */
+.card_overlay {
+  background-color: rgba(193, 171, 194, 0.603);
+  border-radius: 20px;
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  transform: translateY(100%);
+  transition: 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.card:hover .card_overlay {
+  transform: translateY(0);
+}

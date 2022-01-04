@@ -1,3 +1,5 @@
+const alerta = 'Sinto muito, não encontramos nenhuma receita para esses filtros.';
+
 export async function getCategoriaBebidas() { // testada!
   const APIBebibdas = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
   const data = await fetch(APIBebibdas);
@@ -14,6 +16,32 @@ export async function getBebidasID(iDReceita) { // testada!
   console.log(dataJson);
   const { drinks } = dataJson; // retorno da API - chave drinks
   return drinks;
+}
+
+export async function getBebidasIngrediente(ingrediente) {
+  try {
+    const Ingrediente = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingrediente}`;
+    const data = await fetch(Ingrediente);
+    const dataJson = await data.json();
+    const { drinks } = dataJson;
+    if (!drinks) global.alert(alerta);
+    return drinks;
+  } catch (error) {
+    global.alert(alerta);
+  }
+}
+
+export async function getBebidasNomeLetra(input, radio) {
+  try {
+    const PrimeiraLetra = `https://www.thecocktaildb.com/api/json/v1/1/search.php?${radio}=${input}`;
+    const data = await fetch(PrimeiraLetra);
+    const dataJson = await data.json();
+    const { drinks } = dataJson;
+    if (!drinks) global.alert(alerta);
+    return drinks;
+  } catch (error) {
+    global.alert(alerta);
+  }
 }
 
 export async function getBuscaBebidas() { // testada!
