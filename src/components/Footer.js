@@ -7,7 +7,7 @@ import '../App.css';
 
 function Footer() {
   return (
-    <footer data-testid="footer" className="Footer">
+    <footer data-testid="footer" className="footer">
       {/* tem que ter posição fixa embaixo pra passar no teste */}
       {/* cada link leva pra uma página - bebidas, comidas, explorar - poderia ser botão,
         mas achei que ficaria mais fácil com link - se necessário pode ser alterado. */}
