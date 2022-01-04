@@ -1,12 +1,16 @@
 import React from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 
 function ExplorarBebidas() {
   return (
-    <Header
-      title="Explorar Bebidas"
-      btnAvaliable={ false }
-    />
+    <>
+      <Header
+        title="Explorar Bebidas"
+        btnAvaliable={ false }
+      />
+      <Footer />
+    </>
   );
 }
 

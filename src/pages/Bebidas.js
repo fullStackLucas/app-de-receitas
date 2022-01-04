@@ -1,3 +1,5 @@
+import React from 'react';
+import Footer from '../components/Footer';
 import React, { useContext } from 'react';
 import Header from '../components/Header';
 import Search from '../components/Search';
@@ -12,13 +14,13 @@ function Bebidas() {
   return (
     <div>
       <Header title="Bebidas" />
+      <Footer />
       { isSearchAvaliable && <Search title="Bebidas" /> }
       <div className="cards">
         {drinks.map((drink, index) => (
           <Cards item={ drink } index={ index } key={ drink.idDrink } />
         ))}
       </div>
-
     </div>
   );
 }
