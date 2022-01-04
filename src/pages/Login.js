@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import Context from '../context/Context';
 
 function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [validate, setValidate] = useState(true);
   const history = useHistory();
+  const { setPerfil } = useContext(Context);
 
   const isValidEmail = (login) => login.match(/^[\w.]+@[\w.]+\w+\.\w+$/);
 
@@ -25,6 +27,7 @@ function Login() {
   };
 
   const setToLocalStorage = () => {
+    setPerfil(email);
     localStorage.setItem('user', JSON.stringify({
       email,
     }));
@@ -42,12 +45,14 @@ function Login() {
           data-testid="email-input"
           value={ email }
           onChange={ handleLogin }
+          placeholder="Digite seu email"
         />
         <input
           type="password"
           data-testid="password-input"
           value={ password }
           onChange={ handlePassword }
+          placeholder="Digite sua senha"
         />
         <button
           type="button"
