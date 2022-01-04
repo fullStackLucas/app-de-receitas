@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import Search from '../components/Search';
 import Context from '../context/Context';
@@ -9,6 +10,7 @@ function Comidas() {
     <div>
       <Header title="Comidas" />
       { isSearchAvaliable && <Search /> }
+      <Footer/>
     </div>
   );
 }
