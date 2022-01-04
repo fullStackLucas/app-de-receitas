@@ -15,13 +15,12 @@
   max-height: 80vh;
 }
 
-footer { 
-  align-items: center;
-  bottom: 0px;
+footer {
+  bottom: 0;
   display: flex;
   justify-content: center;
   position: fixed;
-  text-align: center;
+  width: 100%;
 }
 
 /*
