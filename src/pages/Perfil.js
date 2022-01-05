@@ -6,7 +6,9 @@ import Header from '../components/Header';
 function Perfil() {
   const [email, setEmail] = useState('');
   const getEmail = () => {
-    const currentEmail = JSON.parse(localStorage.getItem('user'));
+    const currentEmail = localStorage.getItem('user')
+      ? JSON.parse(localStorage.getItem('user'))
+      : '';
     setEmail(currentEmail.email);
   };
   useEffect(() => getEmail());

@@ -8,7 +8,6 @@ function Provider({ children }) {
   const [isSearchAvaliable, toggleSearch] = useState(false);
   const [dataMeals, setDataMeals] = useState([]);
   const [dataDrinks, setDataDrinks] = useState([]);
-  const [perfil, setPerfil] = useState('');
 
   useEffect(() => {
     getBuscaComidas().then((response) => setDataMeals([...response]));
@@ -22,8 +21,6 @@ function Provider({ children }) {
     dataMeals,
     setDataDrinks,
     dataDrinks,
-    perfil,
-    setPerfil,
   };
 
   return (
