@@ -88,7 +88,7 @@ export async function getBuscaComidas() {
 }
 
 // testado e funcionando
-export async function getRandonComidas() {
+export async function getRandomComidas() {
   const ComidasRandon = 'https://www.themealdb.com/api/json/v1/1/random.php';
   const data = await fetch(ComidasRandon);
   const dataJson = await data.json();

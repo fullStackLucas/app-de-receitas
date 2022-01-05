@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { getRandonBebidas } from '../service/GetBebidas';
 
 function ExplorarBebidas() {
+  const history = useHistory();
+  const randomDrink = async () => {
+    const drink = await getRandonBebidas();
+    history.push(`/bebidas/${drink[0].idDrink}`);
+  };
   return (
     <>
       <Header
@@ -15,31 +22,22 @@ function ExplorarBebidas() {
           type="button"
           data-testid="explore-by-ingredient"
         >
-          Por Ingrediente
+          Por Ingredientes
         </button>
       </Link>
 
-      <Link to="/???????">
-        <button
-          type="button"
-          data-testid="explore-by-area"
-        >
-          Por Local de Origem
-        </button>
-      </Link>
-
-      <Link to={ `/bebidas/${'***ID ALEATÓRIO'}` }>
-        {/*
+      {/*
         Ao clicar no botão "Me Surpreenda!" da tela de explorar bebidas a
         rota muda para a página de detalhes de uma bebida aleatória
-        obtida através do endpoint https://www.thecocktaildb.com/api/json/v1/1/random.php.> */}
-        <button
-          type="button"
-          data-testid="explore-surprise"
-        >
-          Me Surpreenda!
-        </button>
-      </Link>
+        obtida através do endpoint https://www.thecocktaildb.com/api/json/v1/1/random.php.>
+      */}
+      <button
+        type="button"
+        data-testid="explore-surprise"
+        onClick={ randomDrink }
+      >
+        Me Surpreenda!
+      </button>
       <Footer />
     </>
   );

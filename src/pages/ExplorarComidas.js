@@ -1,9 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
+import { getRandomComidas } from '../service/GetComidas';
 
 function ExplorarComidas() {
+  const history = useHistory();
+  const randomFood = async () => {
+    const food = await getRandomComidas();
+    history.push(`/comidas/${food[0].idMeal}`);
+  };
+
   return (
     <>
       <Header
@@ -16,7 +23,7 @@ function ExplorarComidas() {
           type="button"
           data-testid="explore-by-ingredient"
         >
-          Por Ingrediente
+          Por Ingredientes
         </button>
       </Link>
 
@@ -29,18 +36,17 @@ function ExplorarComidas() {
         </button>
       </Link>
 
-      <Link to={ `/comidas/${'***ID ALEATÓRIO'}` }>
-        {/*
+      {/*
       Ao clicar no botão "Me Surpreenda!" da tela de explorar comidas a
       rota muda para a página de detalhes de uma comida aleatória obtida através do
       endpoint https://www.themealdb.com/api/json/v1/1/random.php;> */}
-        <button
-          type="button"
-          data-testid="explore-surprise"
-        >
-          Me Surpreenda!
-        </button>
-      </Link>
+      <button
+        type="button"
+        data-testid="explore-surprise"
+        onClick={ randomFood }
+      >
+        Me Surpreenda!
+      </button>
       <Footer />
     </>
   );
