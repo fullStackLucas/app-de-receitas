@@ -8,14 +8,35 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function ComidasDetalhes({ match }) {
   const [item, setItem] = useState('');
+  const [ingredientes, setIngredientes] = useState([]);
+  const [medidas, setMedidas] = useState([]);
   const { id } = match.params;
   const getFood = async () => {
     const food = await getReceitasID(id);
-    console.log(food, '<<<<<<');
+    // console.log(food, '<<<<<<');
     setItem(food[0]);
   };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { getFood(); }, []);
+
+  // useEffect(() => { console.log(item, 'item consolado'); }, [item]);
+
+  useEffect(() => {
+    if (item) // a condição verdadeira qdo existe, pq sim!
+    {
+      const arrayIngredientes = Object.entries(item) // keys vem só chave, value só valor!
+        .filter((ingrediente) => ingrediente[0].includes('strIngredient')
+        && ingrediente[1]);
+      console.log(arrayIngredientes);
+      setIngredientes(arrayIngredientes);
+
+      const arrayMedidas = Object.entries(item) // keys vem só chave, value só valor!
+        .filter((medida) => medida[0].includes('strMeasure')
+      && medida[1] !== ' ' && medida[1]);
+      console.log(arrayMedidas);
+      setMedidas(arrayMedidas);
+    }
+  }, [item]);
 
   return (
     <div>
@@ -57,10 +78,7 @@ function ComidasDetalhes({ match }) {
 
       <ol data-testid="`${index}-ingredient-name-and-measure`">
         Ingredients
-        {item.strIngredient1
-          ? <li data-testid="1-ingredient-name-and-measure">{item.strIngredient1}</li>
-          : ''
-        }
+        {ingredientes.map()}
       </ol>
 
       <p data-testid="instructions">
