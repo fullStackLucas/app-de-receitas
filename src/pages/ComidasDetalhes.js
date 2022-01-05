@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 // import Cards from '../components/Cards';
+import ReactPlayer from 'react-player/youtube';
 import { getReceitasID } from '../service/GetComidas';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
@@ -76,7 +77,7 @@ function ComidasDetalhes({ match }) {
         {' '}
       </p>
 
-      <ul>
+      <ul isCheckbox={ false }>
         Ingredients
         {ingredientes.map((ingrediente, index) => (
           <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
@@ -88,18 +89,17 @@ function ComidasDetalhes({ match }) {
       </ul>
 
       <p data-testid="instructions">
-        {' '}
+        Instructions
         { item.strInstructions }
-        {' '}
       </p>
 
-      <p data-testid="video">
-        {' '}
-        { item.strYoutube }
-        {' '}
-      </p>
+      <ReactPlayer
+        data-testid="video"
+        url={ item.strYoutube }
+      />
 
-      {/* <Cards data-testid="${index}-recomendation-card"> Cards </Cards> */}
+      <p data-testid="0-recomendation-card"> p </p>
+      <p data-testid="1-recomendation-card"> p </p>
 
       <button
         type="button"
