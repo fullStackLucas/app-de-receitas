@@ -8,6 +8,14 @@ export async function getCategoriaBebidas() { // testada!
   return drinks;
 }
 
+export async function getFilteredDrinks(drink) {
+  const filteredDrinksRequested = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drink}`;
+  const data = await fetch(filteredDrinksRequested);
+  const dataJson = await data.json();
+  const { drinks } = dataJson;
+  return drinks;
+}
+
 export async function getBebidasID(iDReceita) { // testada!
   const RequisicaoBebidas = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${iDReceita}`;
   const data = await fetch(RequisicaoBebidas);
