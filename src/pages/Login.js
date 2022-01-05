@@ -42,12 +42,14 @@ function Login() {
           data-testid="email-input"
           value={ email }
           onChange={ handleLogin }
+          placeholder="Digite seu email"
         />
         <input
           type="password"
           data-testid="password-input"
           value={ password }
           onChange={ handlePassword }
+          placeholder="Digite sua senha"
         />
         <button
           type="button"

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Context from './Context';
 import { getBuscaComidas } from '../service/GetComidas';
 import { getBuscaBebidas } from '../service/GetBebidas';
-// import { getRandonBebidas } from '../service/GetBebidas';
 
 function Provider({ children }) {
   const [isSearchAvaliable, toggleSearch] = useState(false);
