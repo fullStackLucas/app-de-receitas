@@ -14,7 +14,7 @@ function Comidas() {
     <div>
       <Header title="Comidas" />
       { isSearchAvaliable && <Search title="Comidas" /> }
-      <CategoryButtons />
+      <CategoryButtons categoryName="Comidas" />
       <div className="cards">
         {meals.map((meal, index) => (
           <Cards item={ meal } index={ index } key={ meal.idMeals } />

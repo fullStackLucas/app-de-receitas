@@ -4,6 +4,7 @@ import Header from '../components/Header';
 import Search from '../components/Search';
 import Context from '../context/Context';
 import Cards from '../components/Cards';
+import CategoryButtons from '../components/CategoryButtons';
 
 function Bebidas() {
   const { isSearchAvaliable, dataDrinks } = useContext(Context);
@@ -15,6 +16,7 @@ function Bebidas() {
       <Header title="Bebidas" />
       <Footer />
       { isSearchAvaliable && <Search title="Bebidas" /> }
+      <CategoryButtons categoryName="Bebidas" />
       <div className="cards">
         {drinks.map((drink, index) => (
           <Cards item={ drink } index={ index } key={ drink.idDrink } />
