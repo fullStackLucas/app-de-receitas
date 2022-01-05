@@ -14,7 +14,6 @@ export async function getComidasArea() {
   const APIComidas = 'https://www.themealdb.com/api/json/v1/1/list.php?a=list';
   const data = await fetch(APIComidas);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { meals } = dataJson; // a chave que chega nessa requisição é meals.
   return meals;
 }
@@ -62,7 +61,6 @@ export async function getCategoriaComidas() {
   const CategoriaComida = 'https://www.themealdb.com/api/json/v1/1/list.php?c=list';
   const data = await fetch(CategoriaComida);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { meals } = dataJson; // a chave que chega nessa requisição é meals.
   return meals;
 }
@@ -72,7 +70,6 @@ export async function getReceitasID(IdComida) {
   const RequisicaoComidas = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${IdComida}`;
   const data = await fetch(RequisicaoComidas);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { meals } = dataJson; // a chave que chega nessa requisição é meals.
   return meals;
 }
@@ -82,7 +79,6 @@ export async function getBuscaComidas() {
   const ComidasSearch = 'https://www.themealdb.com/api/json/v1/1/search.php?s=';
   const data = await fetch(ComidasSearch);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { meals } = dataJson; // a chave que chega nessa requisição é meals.
   return meals;
 }
@@ -92,7 +88,6 @@ export async function getRandomComidas() {
   const ComidasRandon = 'https://www.themealdb.com/api/json/v1/1/random.php';
   const data = await fetch(ComidasRandon);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { meals } = dataJson; // a chave que chega nessa requisição é meals.
   return meals;
 }

@@ -4,7 +4,6 @@ export async function getCategoriaBebidas() { // testada!
   const APIBebibdas = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list';
   const data = await fetch(APIBebibdas);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { drinks } = dataJson; // retorno da API - chave drinks
   return drinks;
 }
@@ -13,7 +12,6 @@ export async function getBebidasID(iDReceita) { // testada!
   const RequisicaoBebidas = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${iDReceita}`;
   const data = await fetch(RequisicaoBebidas);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { drinks } = dataJson; // retorno da API - chave drinks
   return drinks;
 }
@@ -48,7 +46,6 @@ export async function getBuscaBebidas() { // testada!
   const BebidasSearch = 'https://www.thecocktaildb.com/api/json/v1/1/search.php?s=';
   const data = await fetch(BebidasSearch);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { drinks } = dataJson; // retorno da API - chave drinks
   return drinks;
 }
@@ -57,7 +54,6 @@ export async function getRandonBebidas() { // testada!
   const BebidasRanron = 'https://www.thecocktaildb.com/api/json/v1/1/random.php';
   const data = await fetch(BebidasRanron);
   const dataJson = await data.json();
-  console.log(dataJson);
   const { drinks } = dataJson; // retorno da API - chave drinks
   return drinks;
 }
