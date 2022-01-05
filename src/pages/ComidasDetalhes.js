@@ -22,8 +22,8 @@ function ComidasDetalhes({ match }) {
   // useEffect(() => { console.log(item, 'item consolado'); }, [item]);
 
   useEffect(() => {
-    if (item) // a condição verdadeira qdo existe, pq sim!
-    {
+    if (item) {
+      // a condição verdadeira qdo existe, pq sim!
       const arrayIngredientes = Object.entries(item) // keys vem só chave, value só valor!
         .filter((ingrediente) => ingrediente[0].includes('strIngredient')
         && ingrediente[1]);
@@ -76,10 +76,16 @@ function ComidasDetalhes({ match }) {
         {' '}
       </p>
 
-      <ol data-testid="`${index}-ingredient-name-and-measure`">
+      <ul>
         Ingredients
-        {ingredientes.map()}
-      </ol>
+        {ingredientes.map((ingrediente, index) => (
+          <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+            {ingrediente[1]}
+            {' - '}
+            {medidas[index][1]}
+          </li>
+        ))}
+      </ul>
 
       <p data-testid="instructions">
         {' '}
