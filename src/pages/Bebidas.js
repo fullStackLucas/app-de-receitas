@@ -13,13 +13,13 @@ function Bebidas() {
   return (
     <div>
       <Header title="Bebidas" />
-      <Footer />
       { isSearchAvaliable && <Search title="Bebidas" /> }
       <div className="cards">
         {drinks.map((drink, index) => (
           <Cards item={ drink } index={ index } key={ drink.idDrink } />
         ))}
       </div>
+      <Footer />
     </div>
   );
 }

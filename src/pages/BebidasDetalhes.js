@@ -67,7 +67,6 @@ function BebidasDetalhes({ match }) {
 
       {/* <Cards data-testid="${index}-recomendation-card"> Cards </Cards> */}
 
-
       <button
         type="button"
         data-testid="start-recipe-btn"

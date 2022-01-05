@@ -55,9 +55,13 @@ function ComidasDetalhes({ match }) {
         {' '}
       </p>
 
-      {/*   <ol data-testid="`${index}-ingredient-name-and-measure`">
-        ingredientes
-      </ol> */}
+      <ol data-testid="`${index}-ingredient-name-and-measure`">
+        Ingredients
+        {item.strIngredient1
+          ? <li data-testid="1-ingredient-name-and-measure">{item.strIngredient1}</li>
+          : ''
+        }
+      </ol>
 
       <p data-testid="instructions">
         {' '}
