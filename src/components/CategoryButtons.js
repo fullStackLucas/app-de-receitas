@@ -2,23 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { getCategoriaComidas } from '../service/GetComidas';
 
 function CategoryButtons() {
-  const [mealsCategories, setMealsCategories] = useState([]);
+  const [dataMealsCategories, setDataMealsCategories] = useState([]);
+  const MAX_LENGTH_CATEGORIES = 5;
+  const mealsCategories = dataMealsCategories.slice(0, MAX_LENGTH_CATEGORIES);
 
-  useEffect(() => async () => {
-    try {
-      const response = await getCategoriaComidas();
-      return setMealsCategories(response);
-    } catch (e) {
-      console.log(e);
-    }
+  useEffect(() => {
+    getCategoriaComidas().then((response) => setDataMealsCategories([...response]));
   }, []);
 
-  console.log(mealsCategories);
+  console.log(dataMealsCategories);
   return (
     <div className="category-buttons">
-      <button type="button">
-        Olá
-      </button>
+      { mealsCategories.map((category) => (
+        <button
+          data-testid={ `${category.strCategory}-category-filter` }
+          type="button"
+          key={ category.strCategory }
+        >
+          {category.strCategory}
+        </button>
+      )) }
     </div>
   );
 }
