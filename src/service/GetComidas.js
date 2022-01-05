@@ -18,6 +18,14 @@ export async function getComidasArea() {
   return meals;
 }
 
+export async function getFilteredMeals(meal) {
+  const filteredMealsRequested = `https://www.themealdb.com/api/json/v1/1/filter.php?c=${meal}`;
+  const data = await fetch(filteredMealsRequested);
+  const dataJson = await data.json();
+  const { meals } = dataJson;
+  return meals;
+}
+
 // testada e funcionando.
 export async function getComidaIngrediente(ingrediente) {
   try {

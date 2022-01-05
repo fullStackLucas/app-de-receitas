@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { getCategoriaBebidas } from '../service/GetBebidas';
-import { getCategoriaComidas } from '../service/GetComidas';
+import { getCategoriaBebidas, getFilteredDrinks } from '../service/GetBebidas';
+import { getCategoriaComidas, getFilteredMeals } from '../service/GetComidas';
+import Context from '../context/Context';
 
 function CategoryButtons({ categoryName }) {
   const [dataMealsCategories, setDataMealsCategories] = useState([]);
@@ -10,10 +11,18 @@ function CategoryButtons({ categoryName }) {
   const mealsCategories = dataMealsCategories.slice(0, MAX_LENGTH_CATEGORIES);
   const drinksCategories = dataDrinksCategories.slice(0, MAX_LENGTH_CATEGORIES);
 
+  const { setDataMeals, setDataDrinks } = useContext(Context);
+
   useEffect(() => {
     getCategoriaComidas().then((response) => setDataMealsCategories([...response]));
     getCategoriaBebidas().then((response) => setDataDrinksCategories([...response]));
   }, []);
+
+  function onClickButton(categoryType, buttonName) {
+    return categoryType === 'Comidas'
+      ? getFilteredMeals(buttonName).then((response) => setDataMeals([...response]))
+      : getFilteredDrinks(buttonName).then((response) => setDataDrinks([...response]));
+  }
 
   function mapCategory(arrayToMap) {
     return (
@@ -22,6 +31,7 @@ function CategoryButtons({ categoryName }) {
           data-testid={ `${category.strCategory}-category-filter` }
           type="button"
           key={ category.strCategory }
+          onClick={ () => onClickButton(categoryName, category.strCategory) }
         >
           {category.strCategory}
         </button>
@@ -35,8 +45,6 @@ function CategoryButtons({ categoryName }) {
       : mapCategory(drinksCategories);
   }
 
-  console.log(dataMealsCategories);
-  console.log(dataDrinksCategories);
   return (
     <div className="category-buttons">
       {renderButtons(categoryName)}
