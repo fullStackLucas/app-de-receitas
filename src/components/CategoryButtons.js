@@ -71,6 +71,13 @@ function CategoryButtons({ categoryName }) {
   return (
     <div className="category-buttons">
       {renderButtons(categoryName)}
+      <button
+        data-testid="All-category-filter"
+        type="button"
+        onClick={ () => isNameDuplicated(categoryName) }
+      >
+        All
+      </button>
     </div>
   );
 }

@@ -27,7 +27,7 @@ function Cards({ item, index }) {
   );
 
   return (
-    item.idMeal ? renderCards('Meal', 'Comidas') : renderCards('Drink', 'Bebidas')
+    item.idMeal ? renderCards('Meal', 'comidas') : renderCards('Drink', 'bebidas')
   );
 }
 
