@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 // import Cards from '../components/Cards';
 import ReactPlayer from 'react-player/youtube';
 import { getReceitasID } from '../service/GetComidas';
+import Context from '../context/Context';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 
 function ComidasDetalhes({ match }) {
-  const [item, setItem] = useState('');
-  const [ingredientes, setIngredientes] = useState([]);
-  const [medidas, setMedidas] = useState([]);
+  const { ingredientes,
+    medidas, setIngredientes, setMedidas, item, setItem } = useContext(Context);
   const { id } = match.params;
   const getFood = async () => {
     const food = await getReceitasID(id);
@@ -20,7 +20,7 @@ function ComidasDetalhes({ match }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { getFood(); }, []);
 
-  // useEffect(() => { console.log(item, 'item consolado'); }, [item]);
+  // useEffect(() => { console.log(item, 'item consolado'); }, [item])
 
   useEffect(() => {
     if (item) {
@@ -38,6 +38,8 @@ function ComidasDetalhes({ match }) {
       setMedidas(arrayMedidas);
     }
   }, [item]);
+
+  console.log(item);
 
   return (
     <div>
