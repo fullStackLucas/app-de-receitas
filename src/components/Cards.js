@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../style/cards.css';
+import { Link } from 'react-router-dom';
 
 function Cards({ item, index }) {
-  const renderCards = (food) => (
+  const renderCards = (food, portugueseFood) => (
     <div className="card" data-testid={ `${index}-recipe-card` }>
       <p
         className="card_name"
@@ -11,12 +12,14 @@ function Cards({ item, index }) {
       >
         { item[`str${food}`] }
       </p>
-      <img
-        className="card_img"
-        alt={ item[`str${food}`] }
-        src={ item[`str${food}Thumb`] }
-        data-testid={ `${index}-card-img` }
-      />
+      <Link to={ `${portugueseFood}/${item[`id${food}`]}` }>
+        <img
+          className="card_img"
+          alt={ item[`str${food}`] }
+          src={ item[`str${food}Thumb`] }
+          data-testid={ `${index}-card-img` }
+        />
+      </Link>
       <div className="card_overlay">
         {item.strCategory}
       </div>
@@ -24,7 +27,7 @@ function Cards({ item, index }) {
   );
 
   return (
-    item.idMeal ? renderCards('Meal') : renderCards('Drink')
+    item.idMeal ? renderCards('Meal', 'Comidas') : renderCards('Drink', 'Bebidas')
   );
 }
 
