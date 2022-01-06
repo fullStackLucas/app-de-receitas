@@ -10,6 +10,15 @@
   padding: 0;
 }
 
+.cards_detalhes {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(100px, 1fr));
+  list-style-type: none;
+  margin: 4rem 5vw;
+  padding: 0;
+}
+
 /* Classes em Cards.js */
 .card {
   border-radius: 20px;
