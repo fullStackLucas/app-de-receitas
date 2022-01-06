@@ -14,7 +14,6 @@ function Bebidas() {
   return (
     <div>
       <Header title="Bebidas" />
-      <Footer />
       { isSearchAvaliable && <Search title="Bebidas" /> }
       <CategoryButtons categoryName="Bebidas" />
       <div className="cards">
@@ -22,6 +21,7 @@ function Bebidas() {
           <Cards item={ drink } index={ index } key={ drink.idDrink } />
         ))}
       </div>
+      <Footer />
     </div>
   );
 }
