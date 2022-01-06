@@ -1,15 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-// import Cards from '../components/Cards';
+import DetailCards from '../components/DetailCards';
 import { getBebidasID } from '../service/GetBebidas';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import { Link } from 'react-router-dom';
+import '../style/detalhes.css'
+import Context from '../context/Context';
+
 
 function BebidasDetalhes({ match }) {
   const [item, setItem] = useState('');
   const [ingredientes, setIngredientes] = useState([]);
   const [medidas, setMedidas] = useState([]);
+  const { dataMeals } = useContext(Context)
+  const MAX_LENGTH_MEALS = 6;
+  const meals = dataMeals.slice(0, MAX_LENGTH_MEALS);
   const { id } = match.params;
   const getDrink = async () => {
     const drink = await getBebidasID(id);
@@ -95,15 +102,23 @@ function BebidasDetalhes({ match }) {
         {' '}
       </p>
 
-      {/* <Cards data-testid="${index}-recomendation-card"> Cards </Cards> */}
-      <p data-testid="0-recomendation-card"> p </p>
-      <p data-testid="1-recomendation-card"> p </p>
+      <div className="cards_detalhes">
+        {meals.map((meal, index) => (
+          <DetailCards
+            item={ meal }
+            index={ index }
+            key={ meal.idMeals }
+          />
+        ))}
+      </div>
 
       <button
+        className='iniciar_receita'
         type="button"
         data-testid="start-recipe-btn"
       >
         Iniciar Receita
+        <Link to={ `/bebidas/${item.index}/in-progress` }></Link>
       </button>
     </div>
   );

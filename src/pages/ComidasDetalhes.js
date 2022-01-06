@@ -1,20 +1,24 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-// import Cards from '../components/Cards';
+import DetailCards from '../components/DetailCards';
 import ReactPlayer from 'react-player/youtube';
 import { getReceitasID } from '../service/GetComidas';
-import Context from '../context/Context';
-import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
+import Context from '../context/Context';
+import { Link } from 'react-router-dom';
+import '../style/detalhes.css'
+import ShareBtn from '../components/ShareBtn';
 
 function ComidasDetalhes({ match }) {
   const { ingredientes,
     medidas, setIngredientes, setMedidas, item, setItem } = useContext(Context);
+  const { dataDrinks } = useContext(Context)
+  const MAX_LENGTH_DRINKS = 6;
+  const drinks = dataDrinks.slice(0, MAX_LENGTH_DRINKS);
   const { id } = match.params;
   const getFood = async () => {
     const food = await getReceitasID(id);
-    // console.log(food, '<<<<<<');
     setItem(food[0]);
   };
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -47,14 +51,16 @@ function ComidasDetalhes({ match }) {
 
       <h1 data-testid="recipe-title">{ item.strMeal }</h1>
 
-      <button type="button">
+      <ShareBtn />
+
+      {/* <button type="button">
         <img
           src={ shareIcon }
           alt="shareIcon"
           data-testid="share-btn"
         />
         Compartilhar
-      </button>
+      </button> */}
 
       <button type="button">
         <img
@@ -99,15 +105,24 @@ function ComidasDetalhes({ match }) {
         data-testid="video"
         url={ item.strYoutube }
       />
+      <div className="cards_detalhes">
+        {drinks.map((drink, index) => (
+          <DetailCards
+            item={ drink }
+            index={ index }
+            key={ drink.idDrinks }
+          />
+        ))}
+      </div>
 
-      <p data-testid="0-recomendation-card"> p </p>
-      <p data-testid="1-recomendation-card"> p </p>
 
       <button
+        className='iniciar_receita'
         type="button"
         data-testid="start-recipe-btn"
       >
         Iniciar Receita
+        <Link to={ `/comidas/${item.index}/in-progress` }></Link>
       </button>
     </div>
   );
