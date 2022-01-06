@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import DetailCards from '../components/DetailCards';
 import ReactPlayer from 'react-player/youtube';
 import { getReceitasID } from '../service/GetComidas';
-// import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Context from '../context/Context';
@@ -12,9 +11,8 @@ import '../style/detalhes.css'
 import ShareBtn from '../components/ShareBtn';
 
 function ComidasDetalhes({ match }) {
-  const [item, setItem] = useState('');
-  const [ingredientes, setIngredientes] = useState([]);
-  const [medidas, setMedidas] = useState([]);
+  const { ingredientes,
+    medidas, setIngredientes, setMedidas, item, setItem } = useContext(Context);
   const { dataDrinks } = useContext(Context)
   const MAX_LENGTH_DRINKS = 6;
   const drinks = dataDrinks.slice(0, MAX_LENGTH_DRINKS);
@@ -26,7 +24,7 @@ function ComidasDetalhes({ match }) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { getFood(); }, []);
 
-  // useEffect(() => { console.log(item, 'item consolado'); }, [item]);
+  // useEffect(() => { console.log(item, 'item consolado'); }, [item])
 
   useEffect(() => {
     if (item) {
@@ -44,6 +42,8 @@ function ComidasDetalhes({ match }) {
       setMedidas(arrayMedidas);
     }
   }, [item]);
+
+  console.log(item);
 
   return (
     <div>
