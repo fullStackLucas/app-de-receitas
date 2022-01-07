@@ -60,32 +60,17 @@ function ComidasDetalhes({ match }) {
 
       <ShareBtn />
 
-      {/* <button type="button">
-        <img
-          src={ shareIcon }
-          alt="shareIcon"
-          data-testid="share-btn"
-        />
-        Compartilhar
-      </button> */}
+{/*      
 
-      <button type="button">
-        <img
-          src={ whiteHeartIcon }
-          alt="HeartIcon"
-          data-testid="favorite-btn"
-        />
-        Favoritar
-      </button>
-
-      <button type="button">
+  {/*  transformar em componente. 
+     <button type="button">
         <img
           src={ blackHeartIcon }
           alt="HeartIcon"
           data-testid="favorite-btn"
         />
         Favoritar
-      </button>
+      </button> */}
 
       <ul isCheckbox={ false }>
         Ingredients
