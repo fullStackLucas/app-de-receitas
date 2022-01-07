@@ -3,13 +3,12 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player/youtube';
 import { getReceitasID } from '../service/GetComidas';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Context from '../context/Context';
 import '../style/detalhes.css';
 import ShareBtn from '../components/ShareBtn';
 import Recommendations from '../components/Recommendations';
 import StartRecipeButton from '../components/StartRecipeButton';
+import FavoriteBtn from '../components/FavoriteBtn';
 
 function ComidasDetalhes({ match }) {
   const { ingredientes,
@@ -58,19 +57,9 @@ function ComidasDetalhes({ match }) {
         {' '}
       </h2>
 
-      <ShareBtn />
+      <ShareBtn pathname={ id } type="comidas" />
 
-{/*      
-
-  {/*  transformar em componente. 
-     <button type="button">
-        <img
-          src={ blackHeartIcon }
-          alt="HeartIcon"
-          data-testid="favorite-btn"
-        />
-        Favoritar
-      </button> */}
+      <FavoriteBtn />
 
       <ul isCheckbox={ false }>
         Ingredients
