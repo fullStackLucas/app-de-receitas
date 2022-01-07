@@ -5,7 +5,7 @@ import { getReceitasID } from '../service/GetComidas';
 import Context from '../context/Context';
 import ShareBtn from '../components/ShareBtn';
 import FavoriteBtn from '../components/FavoriteBtn';
-import arrayFilter from '../service/Helpers';
+import { arrayFilter, checkTarget } from '../service/Helpers';
 // import shareIcon from '../images/shareIcon.svg';
 // import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
@@ -20,8 +20,8 @@ function ComidasEmProgresso({ match }) { // Adicionado match e prop-types
 
   useEffect(() => {
     if (item) {
-      arrayFilter('strIngredient', setIngredientes);
-      arrayFilter('strMeasure', setMedidas);
+      arrayFilter(item, 'strIngredient', setIngredientes);
+      arrayFilter(item, 'strMeasure', setMedidas);
     }
   }, [item]);
 
@@ -48,6 +48,11 @@ function ComidasEmProgresso({ match }) { // Adicionado match e prop-types
             {ingrediente[1]}
             {' - '}
             {medidas[index][1]}
+            {' - '}
+            <input
+              type="checkbox"
+              onClick={ (e) => checkTarget(e) }
+            />
           </li>
         ))}
       </ul>
