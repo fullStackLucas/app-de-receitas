@@ -39,8 +39,7 @@ function ComidasDetalhes({ match }) {
       setMedidas(arrayMedidas);
     }
   }, [item]);
-
-  console.log(item);
+  // console.log(item);
 
   return (
     <div>
@@ -59,7 +58,7 @@ function ComidasDetalhes({ match }) {
 
       <ShareBtn pathname={ id } type="comidas" />
 
-      <FavoriteBtn />
+      <FavoriteBtn id={ id } />
 
       <ul isCheckbox={ false }>
         Ingredients
