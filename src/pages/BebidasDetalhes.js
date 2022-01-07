@@ -1,29 +1,26 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import DetailCards from '../components/DetailCards';
+import { Link } from 'react-router-dom';
 import { getBebidasID } from '../service/GetBebidas';
 import shareIcon from '../images/shareIcon.svg';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
-import { Link } from 'react-router-dom';
-import '../style/detalhes.css'
+import '../style/detalhes.css';
 import Context from '../context/Context';
-
+import Recommendations from '../components/Recommendations';
 
 function BebidasDetalhes({ match }) {
   const [item, setItem] = useState('');
   const [ingredientes, setIngredientes] = useState([]);
   const [medidas, setMedidas] = useState([]);
-  const { dataMeals } = useContext(Context)
-  const MAX_LENGTH_MEALS = 6;
-  const meals = dataMeals.slice(0, MAX_LENGTH_MEALS);
+  const { dataMeals } = useContext(Context);
   const { id } = match.params;
   const getDrink = async () => {
     const drink = await getBebidasID(id);
     console.log(drink, '<<<<<<');
     setItem(drink[0]);
   };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { getDrink(); }, []);
 
   useEffect(() => {
@@ -45,7 +42,12 @@ function BebidasDetalhes({ match }) {
 
   return (
     <div>
-      <img data-testid="recipe-photo" alt="img" src={ item.strDrinkThumb } />
+      <img
+        className="top-img"
+        data-testid="recipe-photo"
+        alt="img"
+        src={ item.strDrinkThumb }
+      />
 
       <h1 data-testid="recipe-title">{ item.strDrink }</h1>
 
@@ -102,24 +104,19 @@ function BebidasDetalhes({ match }) {
         {' '}
       </p>
 
-      <div className="cards_detalhes">
-        {meals.map((meal, index) => (
-          <DetailCards
-            item={ meal }
-            index={ index }
-            key={ meal.idMeals }
-          />
-        ))}
-      </div>
+      <Recommendations items={ dataMeals } />
 
-      <button
-        className='iniciar_receita'
-        type="button"
-        data-testid="start-recipe-btn"
-      >
-        Iniciar Receita
-        <Link to={ `/bebidas/${item.index}/in-progress` }></Link>
-      </button>
+      <div className="iniciar_receita">
+        <Link to={ `/bebidas/${id}/in-progress` }>
+          <button
+            className="btn btn-primary"
+            type="button"
+            data-testid="start-recipe-btn"
+          >
+            Iniciar Receita
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

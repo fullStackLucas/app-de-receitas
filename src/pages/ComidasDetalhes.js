@@ -1,27 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
-import DetailCards from '../components/DetailCards';
 import ReactPlayer from 'react-player/youtube';
+import { Link } from 'react-router-dom';
 import { getReceitasID } from '../service/GetComidas';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Context from '../context/Context';
-import { Link } from 'react-router-dom';
-import '../style/detalhes.css'
+import '../style/detalhes.css';
 import ShareBtn from '../components/ShareBtn';
+import Recommendations from '../components/Recommendations';
 
 function ComidasDetalhes({ match }) {
   const { ingredientes,
     medidas, setIngredientes, setMedidas, item, setItem } = useContext(Context);
-  const { dataDrinks } = useContext(Context)
-  const MAX_LENGTH_DRINKS = 6;
-  const drinks = dataDrinks.slice(0, MAX_LENGTH_DRINKS);
+  const { dataDrinks } = useContext(Context);
   const { id } = match.params;
   const getFood = async () => {
     const food = await getReceitasID(id);
     setItem(food[0]);
   };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { getFood(); }, []);
 
   // useEffect(() => { console.log(item, 'item consolado'); }, [item])
@@ -47,9 +45,18 @@ function ComidasDetalhes({ match }) {
 
   return (
     <div>
-      <img data-testid="recipe-photo" alt="img" src={ item.strMealThumb } />
+      <img
+        className="top-img"
+        data-testid="recipe-photo"
+        alt="img"
+        src={ item.strMealThumb }
+      />
 
       <h1 data-testid="recipe-title">{ item.strMeal }</h1>
+      <h2 data-testid="recipe-category">
+        { item.strCategory }
+        {' '}
+      </h2>
 
       <ShareBtn />
 
@@ -80,11 +87,6 @@ function ComidasDetalhes({ match }) {
         Favoritar
       </button>
 
-      <p data-testid="recipe-category">
-        { item.strCategory }
-        {' '}
-      </p>
-
       <ul isCheckbox={ false }>
         Ingredients
         {ingredientes.map((ingrediente, index) => (
@@ -102,28 +104,23 @@ function ComidasDetalhes({ match }) {
       </p>
 
       <ReactPlayer
+        className="player"
         data-testid="video"
+        width="100%"
         url={ item.strYoutube }
       />
-      <div className="cards_detalhes">
-        {drinks.map((drink, index) => (
-          <DetailCards
-            item={ drink }
-            index={ index }
-            key={ drink.idDrinks }
-          />
-        ))}
+      <Recommendations items={ dataDrinks } />
+      <div className="iniciar_receita">
+        <Link to={ `/comidas/${id}/in-progress` }>
+          <button
+            className="btn btn-primary"
+            type="button"
+            data-testid="start-recipe-btn"
+          >
+            Iniciar Receita
+          </button>
+        </Link>
       </div>
-
-
-      <button
-        className='iniciar_receita'
-        type="button"
-        data-testid="start-recipe-btn"
-      >
-        Iniciar Receita
-        <Link to={ `/comidas/${item.index}/in-progress` }></Link>
-      </button>
     </div>
   );
 }

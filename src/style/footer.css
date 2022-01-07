@@ -1,7 +1,20 @@
 footer {
+  background-color: rgba(255, 255, 255, 0.541);
   bottom: 0;
   display: flex;
   justify-content: center;
   position: fixed;
   width: 100%;
+}
+
+footer a {
+  margin: 0 10px;
+}
+
+@media screen and ( max-width : 400px ) {
+
+  footer {
+    background-color: gainsboro;
+    justify-content: space-between;
+  }
 }

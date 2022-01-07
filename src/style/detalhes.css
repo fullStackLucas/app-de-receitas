@@ -1,7 +1,50 @@
+/* utilizado em BebidasDetalhes e ComidasDetalhes.js */
 .iniciar_receita {
-  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+.iniciar_receita button {
+  bottom: 5px;
+  position: fixed;
+  width: 40%;
+}
+
+/* Utilizado para que o Link não limite o tamanho do Button */
+.iniciar_receita a {
+  align-items: center;
+  bottom: 5px;
   display: flex;
   justify-content: center;
-  align-items: center;
   position: fixed;
+  width: 100%;
+}
+
+iframe {
+  width: 40%;
+}
+
+.top-img {
+  width: 500px;
+}
+
+.recommendations {
+  margin-bottom: 20px;
+}
+
+@media screen and ( max-width : 400px ) {
+
+  .iniciar_receita button {
+    bottom: 0;
+    width: 105%;
+  }
+
+  iframe {
+    height: 240px;
+    width: 320px;
+  }
+
+  .top-img {
+    width: 100%;
+  }
 }
