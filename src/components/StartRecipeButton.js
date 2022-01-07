@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { isDoneRecipe } from '../service/localStorage';
+import { isDoneRecipe, isInProgressRecipe } from '../service/localStorage';
 
 export default function StartRecipeButton({ id, type }) {
+  const tipo = type === 'comidas' ? 'meals' : 'cocktails';
   const recipeButton = () => (
     <div className="iniciar_receita">
       <Link to={ `/${type}/${id}/in-progress` }>
@@ -12,7 +13,7 @@ export default function StartRecipeButton({ id, type }) {
           type="button"
           data-testid="start-recipe-btn"
         >
-          Iniciar Receita
+          {isInProgressRecipe(id, tipo) ? 'Continuar Receita' : 'Iniciar Receita'}
         </button>
       </Link>
     </div>
