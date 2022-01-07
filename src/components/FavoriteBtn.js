@@ -1,19 +1,21 @@
 // import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { isFavorited, setFavoritedItem } from '../service/localStorage';
 import Context from '../context/Context';
 
-export default function FavoriteBtn() {
+export default function FavoriteBtn({ id }) {
+  const [favorite, setFavorite] = useState(isFavorited(id));
   const { item } = useContext(Context);
   return (
     <button
       type="button"
-      onClick={ () => { console.log(item); setFavoritedItem(item); } }
+      onClick={ () => { setFavoritedItem(item); setFavorite(!favorite); } }
     >
       <img
-        src={ isFavorited(item.id) ? blackHeartIcon : whiteHeartIcon }
+        src={ favorite ? blackHeartIcon : whiteHeartIcon }
         alt="HeartIcon"
         data-testid="favorite-btn"
       />
@@ -21,3 +23,7 @@ export default function FavoriteBtn() {
     </button>
   );
 }
+
+FavoriteBtn.propTypes = {
+  id: PropTypes.string.isRequired,
+};

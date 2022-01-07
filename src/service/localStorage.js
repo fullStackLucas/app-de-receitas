@@ -39,11 +39,14 @@ export function isFavorited(id) { // é o ID que esta na pagina de detalhes
 
 export function setFavoritedItem(item) { // é o ID que esta na pagina de detalhes
   const id = item.idMeal ? item.idMeal : item.idDrink;
+  const type = item.idMeal ? 'idMeal' : 'idDrink';
+  console.log(item, id, type);
   if (!localStorage.getItem('favoritedRecipes')) {
-    localStorage.setItem('favoritedRecipes', []);
-  } else if (isFavorited(item.id)) {
+    localStorage.setItem('favoritedRecipes', JSON.stringify([]));
+  }
+  if (isFavorited(item.id)) {
     const favorite = JSON.parse(localStorage.getItem('favoritedRecipes'))
-      .filter((itemObj) => itemObj.id !== id);
+      .filter((itemObj) => itemObj[type] !== id);
     localStorage.setItem('favoritedRecipes', JSON.stringify(favorite));
   } else {
     const favorite = JSON.parse(localStorage.getItem('favoritedRecipes'));
