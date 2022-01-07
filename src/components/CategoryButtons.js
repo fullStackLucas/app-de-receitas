@@ -1,3 +1,4 @@
+// Este componente é renderizado nas páginas de: "Comidas.js" e "Bebidas.js"
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { getBuscaBebidas,
