@@ -2,7 +2,6 @@
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player/youtube';
-import { Link } from 'react-router-dom';
 import { getReceitasID } from '../service/GetComidas';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
@@ -10,6 +9,7 @@ import Context from '../context/Context';
 import '../style/detalhes.css';
 import ShareBtn from '../components/ShareBtn';
 import Recommendations from '../components/Recommendations';
+import StartRecipeButton from '../components/StartRecipeButton';
 
 function ComidasDetalhes({ match }) {
   const { ingredientes,
@@ -110,17 +110,7 @@ function ComidasDetalhes({ match }) {
         url={ item.strYoutube }
       />
       <Recommendations items={ dataDrinks } />
-      <div className="iniciar_receita">
-        <Link to={ `/comidas/${id}/in-progress` }>
-          <button
-            className="btn btn-primary"
-            type="button"
-            data-testid="start-recipe-btn"
-          >
-            Iniciar Receita
-          </button>
-        </Link>
-      </div>
+      <StartRecipeButton id={ id } type="comidas" />
     </div>
   );
 }
