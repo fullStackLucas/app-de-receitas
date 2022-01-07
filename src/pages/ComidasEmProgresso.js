@@ -1,22 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { getReceitasID } from '../service/GetComidas';
 import Context from '../context/Context';
 // import shareIcon from '../images/shareIcon.svg';
 // import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 
-function ComidasEmProgresso() {
+function ComidasEmProgresso({ match }) { // Adicionado match e prop-types
   const { ingredientes, medidas, item, setItem } = useContext(Context);
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const { id } = match.params; // Linha adicionada
   useEffect(() => {
-    getReceitasID('52771').then((response) => setItem(response));
+    getReceitasID(id).then((response) => setItem(response[0])); // Original: setItem(response)
   }, []);
 
   console.log(item);
   return (
     <>
       {item && (
-        <img data-testid="recipe-photo" alt="img" src={ item[0].strMealThumb } />
+        <img data-testid="recipe-photo" alt="img" src={ item.strMealThumb } /> // original: src={ item[0].strMealThumb }
       )}
 
       <h1 data-testid="recipe-title">{item.strMeal}</h1>
@@ -37,5 +38,13 @@ function ComidasEmProgresso() {
     </>
   );
 }
+
+ComidasEmProgresso.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default ComidasEmProgresso;

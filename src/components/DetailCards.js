@@ -1,3 +1,4 @@
+/* DetailCards é utilizado em Recommendations */
 import React from 'react';
 import PropTypes from 'prop-types';
 import '../style/cards.css';
@@ -12,7 +13,7 @@ function DetailCards({ item, index }) {
       >
         { item[`str${food}`] }
       </p>
-      <Link to={ `${portugueseFood}/${item[`id${food}`]}` }>
+      <Link to={ `/${portugueseFood}/${item[`id${food}`]}` }>
         <img
           className="card_img"
           alt={ item[`str${food}`] }

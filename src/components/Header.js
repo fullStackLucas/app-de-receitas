@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import Context from '../context/Context';
+import '../style/header.css';
 
 function Header({ title, btnAvaliable = true }) {
   const history = useHistory();
@@ -13,9 +14,10 @@ function Header({ title, btnAvaliable = true }) {
     <header>
       <h2 data-testid="page-title">{ title }</h2>
       <button
+        className="profile-btn"
         type="button"
         data-testid="profile-top-btn"
-        onClick={ () => { history.push('./perfil'); } }
+        onClick={ () => { history.push('/perfil'); } }
         src={ profileIcon }
       >
         <img
@@ -26,6 +28,7 @@ function Header({ title, btnAvaliable = true }) {
       </button>
       { btnAvaliable && (
         <button
+          className="search-btn"
           type="button"
           data-testid="search-top-btn"
           onClick={ () => toggleSearch(!isSearchAvaliable) }
