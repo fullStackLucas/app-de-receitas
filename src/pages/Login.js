@@ -1,3 +1,4 @@
+import '../style/login.css';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
@@ -34,24 +35,33 @@ function Login() {
   };
 
   return (
-    <div>
-      <form>
-        <input
-          type="text"
-          name="login"
-          data-testid="email-input"
-          value={ email }
-          onChange={ handleLogin }
-          placeholder="Digite seu email"
-        />
-        <input
-          type="password"
-          data-testid="password-input"
-          value={ password }
-          onChange={ handlePassword }
-          placeholder="Digite sua senha"
-        />
+    <div className="containers">
+      <form className="login-form">
+        <h1>LOGIN</h1>
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="text"
+            name="login"
+            data-testid="email-input"
+            value={ email }
+            onChange={ handleLogin }
+            placeholder="Digite seu email"
+          />
+        </div>
+        <div className="form-group">
+          <input
+            className="form-control"
+            type="password"
+            data-testid="password-input"
+            value={ password }
+            onChange={ handlePassword }
+            placeholder="Digite sua senha"
+          />
+        </div>
+
         <button
+          className="btn btn-warning"
           type="button"
           data-testid="login-submit-btn"
           disabled={ validate }
@@ -59,7 +69,6 @@ function Login() {
         >
           Entrar
         </button>
-
       </form>
     </div>
   );

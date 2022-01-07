@@ -1,0 +1,55 @@
+/* Login */
+
+/*
+ <div className="containers">
+    <form className="login-form">
+        <h1>LOGIN</h1>
+        <div className="form-group">         <<< Bootstrap
+            <input className="form-control"> <<< Bootstrap
+        </div>
+        <button className="btn btn-warning"> <<< Bootstrap
+    </form>
+  </div>
+*/
+
+/*
+https://getbootstrap.com/docs/5.1/forms/input-group/
+https://getbootstrap.com/docs/5.1/forms/form-control/
+https://bootsnipp.com/tags/login
+https://getbootstrap.com/docs/4.0/layout/overview/
+https://getwallpapers.com/search?term=food
+https://getwallpapers.com/wallpaper/full/e/e/9/488975.jpg
+https://getwallpapers.com/wallpaper/full/4/2/0/153829.jpg
+*/
+
+.containers {
+  background-image: url('https://getwallpapers.com/wallpaper/full/e/e/9/488975.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+}
+
+.login-form {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
+  width: 400px;
+}
+
+.form-group {
+  margin: 20px;
+}
+
+.login-form h1 {
+  color: white;
+}
+
+.containers button {
+  margin: 8px;
+  width: 70%;
+}

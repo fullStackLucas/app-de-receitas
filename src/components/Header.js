@@ -17,7 +17,7 @@ function Header({ title, btnAvaliable = true }) {
         className="profile-btn"
         type="button"
         data-testid="profile-top-btn"
-        onClick={ () => { history.push('./perfil'); } }
+        onClick={ () => { history.push('/perfil'); } }
         src={ profileIcon }
       >
         <img
