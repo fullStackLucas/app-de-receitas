@@ -403,8 +403,8 @@ describe('43 - Implemente a solução de forma que, ao clicar no botão de compa
   });
 });
 
-describe('44 - Implemente o ícone do coração (favorito) de maneira que, deve vir preenchido caso a receita esteja favoritada e "despreenchido" caso contrário', () => {
-  it('Verifica se a comida favoritada vem com o coração preenchido', () => {
+describe.only('44 - Implemente o ícone do coração (favorito) de maneira que, deve vir preenchido caso a receita esteja favoritada e "despreenchido" caso contrário', () => {
+  it.only('Verifica se a comida favoritada vem com o coração preenchido', () => {
     cy.visit('http://localhost:3000/comidas/52771', {
       onBeforeLoad(win) {
         const favoriteRecipes = [{
@@ -422,8 +422,8 @@ describe('44 - Implemente o ícone do coração (favorito) de maneira que, deve 
     });
 
     cy.get('[data-testid="favorite-btn"]')
-      .should('have.attr', 'src')
-      .should('include', 'blackHeartIcon');
+    .should('have.attr', 'src')
+    .should('include', 'blackHeartIcon');
   });
 
   it('Verifica se a comida não favoritada vem com o coração "despreenchido"', () => {

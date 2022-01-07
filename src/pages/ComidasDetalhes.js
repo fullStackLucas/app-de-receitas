@@ -58,7 +58,7 @@ function ComidasDetalhes({ match }) {
 
       <ShareBtn pathname={ id } type="comidas" />
 
-      <FavoriteBtn id={ id } />
+      <FavoriteBtn />
 
       <ul isCheckbox={ false }>
         Ingredients
