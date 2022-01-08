@@ -1,8 +1,6 @@
 // Nada testado corretamenta.
-export function isDoneRecipe(id) {
-  const recipes = localStorage.getItem('doneRecipes')
-    ? JSON.parse(localStorage.getItem('doneRecipes'))
-    : [];
+export function isDoneRecipe(id, type) {
+  const recipes = localStorage.getItem('doneRecipes').key[type[id]];
   return recipes.some((recipe) => recipe.id === id);
 }
 
@@ -51,6 +49,30 @@ export function setFavoritedItem(item) { // é o ID que esta na pagina de detalh
   } else {
     const favorite = JSON.parse(localStorage.getItem('favoritedRecipes'));
     localStorage.setItem('favoritedRecipes', JSON.stringify([...favorite, item]));
+  }
+}
+
+export function setRecipesInProgress(item, igredient) {
+  const id = item.idMeal ? item.idMeal : item.idDrink;
+  const type = item.idMeal ? 'idMeal' : 'idDrink';
+  const key = {
+    [item[`${type}`]]: {
+      [item[`${id}`]]: [],
+    },
+  };
+  key.type.id = [...key.type.id, igredient];
+  if (!localStorage.getItem('doneRecipes')) {
+    localStorage.setItem('doneRecipes', JSON.stringify({
+      key,
+    }));
+  }
+  if (isDoneRecipe(item.id)) {
+    const done = JSON.parse(localStorage.getItem('doneRecipes')).key.type.id
+      .filter((position) => position !== igredient);
+    localStorage.setItem('DoneRecipes', JSON.stringify(done));
+  } else {
+    const done = JSON.parse(localStorage.getItem('doneRecipes'));
+    localStorage.setItem('DoneRecipes', JSON.stringify([...done, item]));
   }
 }
 
