@@ -5,22 +5,36 @@ import { getBebidasID } from '../service/GetBebidas';
 import Context from '../context/Context';
 import ShareBtn from '../components/ShareBtn';
 import FavoriteBtn from '../components/FavoriteBtn';
-import { arrayFilter, checkTarget } from '../service/Helpers';
+import { filterIgredientsOrMeasures,
+  checkTarget, searchFromLocalStorageById } from '../service/Helpers';
+import { defineInProgressIgredients } from '../service/localStorage';
+import '../App.css';
 
 function BebidasEmProgresso({ match }) {
-  const [isChecked, toggleChecked] = useState(false);
   const { ingredientes, medidas, item, setItem, setIngredientes,
     setMedidas } = useContext(Context);
   const { id } = match.params;
+  const [isChecked, toggleChecked] = useState(
+    searchFromLocalStorageById('drinksInProgress', id),
+  );
 
   useEffect(() => {
     getBebidasID(id).then((response) => setItem(response[0]));
   }, []);
 
   useEffect(() => {
+    defineInProgressIgredients('drinksInProgress', id);
+    const prevState = JSON.parse(localStorage.getItem('drinksInProgress'));
+    localStorage.setItem('drinksInProgress', JSON.stringify({
+      ...prevState,
+      [id]: isChecked,
+    }));
+  }, [isChecked]);
+
+  useEffect(() => {
     if (item) {
-      arrayFilter(item, 'strIngredient', setIngredientes);
-      arrayFilter(item, 'strMeasure', setMedidas);
+      filterIgredientsOrMeasures(item, 'strIngredient', setIngredientes);
+      filterIgredientsOrMeasures(item, 'strMeasure', setMedidas);
     }
   }, [item]);
 
@@ -37,21 +51,29 @@ function BebidasEmProgresso({ match }) {
         {' '}
       </h2>
 
-      <ShareBtn pathname={ item.idDrink } type="comidas" />
+      <ShareBtn pathname={ item.idDrink } type="bebidas" />
       <FavoriteBtn id={ item.idDrink } />
 
       <ul isCheckbox={ false }>
         Ingredients
         {ingredientes.map((ingrediente, index) => (
-          <li key={ index } data-testid={ `${index}-ingredient-step` }>
-            {ingrediente[1]}
-            {' - '}
-            {medidas[index][1]}
-            {' - '}
+          <li
+            key={ index }
+            data-testid={ `${index}-ingredient-step` }
+            className={ searchFromLocalStorageById('drinksInProgress', id)[index]
+              ? 'done-igredient' : 'igredient' }
+          >
+            {`${ingrediente[1]} -  ${medidas[index] ? medidas[index][1] : ''}`}
             <input
               type="checkbox"
-              checked={ isChecked }
-              onClick={ (e) => toggleChecked(checkTarget(e)) }
+              checked={ isChecked[index] }
+              onClick={ (e) => {
+                toggleChecked({
+                  ...isChecked,
+                  [index]: !isChecked[index],
+                });
+                checkTarget(e);
+              } }
             />
           </li>
         ))}
