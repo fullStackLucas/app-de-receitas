@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
-import IngredientCards from '../components/IngredientCards'; 
+import IngredientCards from '../components/IngredientCards';
 import { getAllIngredientComidas } from '../service/GetComidas';
 import { getAllIngredienteBebidas } from '../service/GetBebidas';
 
 function ExplorarComidasIngredientes() {
-  const [ dataMeals, setDataMeals] = useState([]);
+  const [dataMeals, setDataMeals] = useState([]);
   const MAX_LENGTH_MEALS = 12;
   const meals = dataMeals.slice(0, MAX_LENGTH_MEALS);
   useEffect(() => {
