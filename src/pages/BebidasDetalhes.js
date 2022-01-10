@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { getBebidasID } from '../service/GetBebidas';
 import '../style/detalhes.css';
@@ -11,11 +11,8 @@ import FavoriteBtn from '../components/FavoriteBtn';
 import { filterIgredientsOrMeasures } from '../service/Helpers';
 
 function BebidasDetalhes({ match }) {
-  const [item, setItem] = useState('');
-  const [ingredientes, setIngredientes] = useState([]);
-  const [medidas, setMedidas] = useState([]);
-
-  const { dataMeals } = useContext(Context);
+  const { ingredientes, medidas, setIngredientes,
+    setMedidas, item, setItem, dataMeals } = useContext(Context);
   const { id } = match.params;
   const getDrink = async () => {
     const drink = await getBebidasID(id);
@@ -47,7 +44,7 @@ function BebidasDetalhes({ match }) {
 
       <ShareBtn pathname={ id } type="bebidas" />
 
-      <FavoriteBtn />
+      <FavoriteBtn id={ id } />
 
       <p data-testid="recipe-category">
         { item.strAlcoholic }
