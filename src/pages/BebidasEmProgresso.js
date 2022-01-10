@@ -52,7 +52,7 @@ function BebidasEmProgresso({ match }) {
       </h2>
 
       <ShareBtn pathname={ item.idDrink } type="bebidas" />
-      <FavoriteBtn />
+      <FavoriteBtn id={ id } />
 
       <ul isCheckbox={ false }>
         Ingredients

@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
+import PropTypes from 'prop-types';
 import whiteHeartIcon from '../images/whiteHeartIcon.svg';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { isFavorited, setFavoritedItem } from '../service/localStorage';
@@ -27,3 +28,7 @@ export default function FavoriteBtn({ id }) {
     </button>
   );
 }
+
+FavoriteBtn.propTypes = {
+  id: PropTypes.string.isRequired,
+};
