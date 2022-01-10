@@ -5,9 +5,13 @@ import blackHeartIcon from '../images/blackHeartIcon.svg';
 import { isFavorited, setFavoritedItem } from '../service/localStorage';
 import Context from '../context/Context';
 
-export default function FavoriteBtn() {
+export default function FavoriteBtn({ id }) {
   const { item } = useContext(Context);
-  const [favorite, setFavorite] = useState(isFavorited(item.idDrink) || false);
+  const [favorite, setFavorite] = useState(
+    isFavorited(id) || false,
+  );
+
+  console.log(isFavorited(id), id);
 
   return (
     <button

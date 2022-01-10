@@ -35,7 +35,7 @@ export function isFavorited(id) { // é o ID que esta na pagina de detalhes
   const favorited = localStorage.getItem(FAVORITED_RECIPES)
     ? JSON.parse(localStorage.getItem(FAVORITED_RECIPES))
     : [];
-  return favorited.some((recipe) => recipe[id] === id);
+  return favorited.some((recipe) => recipe.id === id);
 }
 
 export function setFavoritedItem(item) { // é o ID que esta na pagina de detalhes
@@ -59,7 +59,7 @@ export function setFavoritedItem(item) { // é o ID que esta na pagina de detalh
   if (!localStorage.getItem(FAVORITED_RECIPES)) {
     localStorage.setItem(FAVORITED_RECIPES, JSON.stringify([]));
   }
-  if (isFavorited(newItem[id])) {
+  if (isFavorited(newItem.id)) {
     const favorite = JSON.parse(localStorage.getItem(FAVORITED_RECIPES))
       .filter((itemObj) => itemObj.id !== id);
     localStorage.setItem(FAVORITED_RECIPES, JSON.stringify(favorite));

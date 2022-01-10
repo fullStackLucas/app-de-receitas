@@ -57,7 +57,7 @@ function ComidasDetalhes({ match }) {
 
       <ShareBtn pathname={ id } type="comidas" />
 
-      <FavoriteBtn />
+      <FavoriteBtn id={ id } />
 
       { /* isCheckbox={ false }  dentro de ul gerando warning */ }
       <ul>
