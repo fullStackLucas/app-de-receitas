@@ -12,7 +12,7 @@ function Cards({ item, index }) {
       >
         { item[`str${food}`] }
       </p>
-      <Link to={ `${portugueseFood}/${item[`id${food}`]}` }>
+      <Link to={ `/${portugueseFood}/${item[`id${food}`]}` }>
         <img
           className="card_img"
           alt={ item[`str${food}`] }
