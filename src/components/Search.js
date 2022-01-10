@@ -40,6 +40,12 @@ function Search({ title }) {
         type="text"
         onChange={ ({ target }) => { setInputValue(target.value); } }
       />
+      <button
+        type="submit"
+        data-testid="exec-search-btn"
+      >
+        Buscar
+      </button>
       <div onChange={ ({ target }) => { setRadioValue(target.value); } }>
         <label htmlFor="ingredient-radio">
           <input
@@ -72,12 +78,6 @@ function Search({ title }) {
           Primeira Letra
         </label>
       </div>
-      <button
-        type="submit"
-        data-testid="exec-search-btn"
-      >
-        Buscar
-      </button>
     </form>
   );
 }

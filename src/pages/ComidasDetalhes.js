@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player/youtube';
@@ -15,11 +14,13 @@ function ComidasDetalhes({ match }) {
     medidas, setIngredientes, setMedidas, item, setItem } = useContext(Context);
   const { dataDrinks } = useContext(Context);
   const { id } = match.params;
-  const getFood = async () => {
-    const food = await getReceitasID(id);
-    setItem(food[0]);
-  };
-  useEffect(() => { getFood(); }, []);
+  useEffect(() => {
+    const getFood = async () => {
+      const food = await getReceitasID(id);
+      setItem(food[0]);
+    };
+    getFood();
+  }, [id, setItem]);
 
   // useEffect(() => { console.log(item, 'item consolado'); }, [item])
 
@@ -29,16 +30,16 @@ function ComidasDetalhes({ match }) {
       const arrayIngredientes = Object.entries(item) // keys vem só chave, value só valor!
         .filter((ingrediente) => ingrediente[0].includes('strIngredient')
         && ingrediente[1]);
-      console.log(arrayIngredientes);
+      // console.log(arrayIngredientes);
       setIngredientes(arrayIngredientes);
 
       const arrayMedidas = Object.entries(item) // keys vem só chave, value só valor!
         .filter((medida) => medida[0].includes('strMeasure')
       && medida[1] !== ' ' && medida[1]);
-      console.log(arrayMedidas);
+      // console.log(arrayMedidas);
       setMedidas(arrayMedidas);
     }
-  }, [item]);
+  }, [item, setIngredientes, setMedidas]);
   // console.log(item);
 
   return (
@@ -58,9 +59,10 @@ function ComidasDetalhes({ match }) {
 
       <ShareBtn pathname={ id } type="comidas" />
 
-      <FavoriteBtn id={ id } />
+      <FavoriteBtn />
 
-      <ul isCheckbox={ false }>
+      { /* isCheckbox={ false }  dentro de ul gerando warning */ }
+      <ul>
         Ingredients
         {ingredientes.map((ingrediente, index) => (
           <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>

@@ -6,6 +6,7 @@ import { getBuscaBebidas,
 import { getBuscaComidas,
   getCategoriaComidas, getFilteredMeals } from '../service/GetComidas';
 import Context from '../context/Context';
+import '../style/categoryButtons.css';
 
 function CategoryButtons({ categoryName }) {
   const [dataMealsCategories, setDataMealsCategories] = useState([]);
@@ -53,6 +54,7 @@ function CategoryButtons({ categoryName }) {
       arrayToMap.map((category) => (
         <button
           data-testid={ `${category.strCategory}-category-filter` }
+          className="btn btn-secondary"
           type="button"
           key={ category.strCategory }
           onClick={ () => onClickButton(categoryName, category.strCategory) }
@@ -73,6 +75,7 @@ function CategoryButtons({ categoryName }) {
     <div className="category-buttons">
       {renderButtons(categoryName)}
       <button
+        className="btn btn-secondary"
         data-testid="All-category-filter"
         type="button"
         onClick={ () => isNameDuplicated(categoryName) }

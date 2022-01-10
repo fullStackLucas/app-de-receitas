@@ -31,26 +31,39 @@ export function inProgressRecipes() {
 
 // funcao pra saber se é ou não favorita
 export function isFavorited(id) { // é o ID que esta na pagina de detalhes
-  const favorited = localStorage.getItem('favoritedRecipes')
-    ? JSON.parse(localStorage.getItem('favoritedRecipes'))
+  const favorited = localStorage.getItem('favoriteRecipes')
+    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
     : [];
   return favorited.some((recipe) => recipe.id === id);
 }
 
 export function setFavoritedItem(item) { // é o ID que esta na pagina de detalhes
   const id = item.idMeal ? item.idMeal : item.idDrink;
-  const type = item.idMeal ? 'idMeal' : 'idDrink';
-  console.log(item, id, type);
-  if (!localStorage.getItem('favoritedRecipes')) {
-    localStorage.setItem('favoritedRecipes', JSON.stringify([]));
+  const type = item.idMeal ? 'idMeal' : 'idDrink'; // CORRIGIR!
+  const alcoholicOrNot = item.idMeal ? '' : item.strAlcoholic;
+  const name = item.idMeal ? item.strMeal : item.strDrink;
+  const image = '';
+
+  const newItem = {
+    id,
+    type,
+    area: item.strArea,
+    category: item.strCategory,
+    alcoholicOrNot,
+    name,
+    image,
+  };
+  console.log(item, newItem, id, type);
+  if (!localStorage.getItem('favoriteRecipes')) {
+    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
   }
-  if (isFavorited(item.id)) {
+  if (isFavorited(newItem.id)) {
     const favorite = JSON.parse(localStorage.getItem('favoritedRecipes'))
       .filter((itemObj) => itemObj[type] !== id);
-    localStorage.setItem('favoritedRecipes', JSON.stringify(favorite));
+    localStorage.setItem('favoriteRecipes', JSON.stringify(favorite));
   } else {
     const favorite = JSON.parse(localStorage.getItem('favoritedRecipes'));
-    localStorage.setItem('favoritedRecipes', JSON.stringify([...favorite, item]));
+    localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newItem]));
   }
 }
 

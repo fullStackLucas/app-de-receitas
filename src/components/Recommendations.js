@@ -6,7 +6,7 @@ import DetailCards from './DetailCards';
 
 function Recommendations({ items }) {
   const MAX_LENGTH_ITEMS = 6;
-  console.log(MAX_LENGTH_ITEMS, items);
+  // console.log(MAX_LENGTH_ITEMS, items);
   const dataItem = items.slice(0, MAX_LENGTH_ITEMS);
   const cards = dataItem.map((item, index) => (
     <DetailCards
@@ -45,7 +45,7 @@ function Recommendations({ items }) {
 }
 
 Recommendations.propTypes = {
-  items: PropTypes.objectOf(PropTypes.any).isRequired,
+  items: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
 export default Recommendations;

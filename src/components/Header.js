@@ -13,34 +13,38 @@ function Header({ title, btnAvaliable = true }) {
   return (
     <header>
       <h2 data-testid="page-title">{ title }</h2>
-      <button
-        className="profile-btn"
-        type="button"
-        data-testid="profile-top-btn"
-        onClick={ () => { history.push('/perfil'); } }
-        src={ profileIcon }
-      >
-        <img
-          src={ profileIcon }
-          alt="profileIcon"
-        />
-        Perfil
-      </button>
-      { btnAvaliable && (
+      <div className="profile-area-btn">
         <button
-          className="search-btn"
+          className="profile-btn btn btn-secondary"
           type="button"
-          data-testid="search-top-btn"
-          onClick={ () => toggleSearch(!isSearchAvaliable) }
-          src={ searchIcon }
+          data-testid="profile-top-btn"
+          onClick={ () => { history.push('/perfil'); } }
+          src={ profileIcon }
         >
           <img
-            src={ searchIcon }
-            alt="searchIcon"
+            src={ profileIcon }
+            alt="profileIcon"
           />
-          Busca
+          Perfil
         </button>
-      ) }
+      </div>
+      <div className="search-area-btn">
+        { btnAvaliable && (
+          <button
+            className="search-btn btn btn-secondary"
+            type="button"
+            data-testid="search-top-btn"
+            onClick={ () => toggleSearch(!isSearchAvaliable) }
+            src={ searchIcon }
+          >
+            <img
+              src={ searchIcon }
+              alt="searchIcon"
+            />
+            Busca
+          </button>
+        ) }
+      </div>
     </header>
   );
 }

@@ -422,8 +422,8 @@ describe('44 - Implemente o ícone do coração (favorito) de maneira que, deve 
     });
 
     cy.get('[data-testid="favorite-btn"]')
-      .should('have.attr', 'src')
-      .should('include', 'blackHeartIcon');
+    .should('have.attr', 'src')
+    .should('include', 'blackHeartIcon');
   });
 
   it('Verifica se a comida não favoritada vem com o coração "despreenchido"', () => {
