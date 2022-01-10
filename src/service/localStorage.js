@@ -67,9 +67,50 @@ export function setFavoritedItem(item) { // é o ID que esta na pagina de detalh
   }
 }
 
+export function setRecipesInProgress(item, igredient) {
+  if (isDoneRecipe(item.id)) {
+    const done = JSON.parse(localStorage.getItem('doneRecipes')).key.type.id
+      .filter((position) => position !== igredient);
+    localStorage.setItem('doneRecipes', JSON.stringify(done));
+  } else {
+    const done = JSON.parse(localStorage.getItem('doneRecipes'));
+    localStorage.setItem('doneRecipes', JSON.stringify([...done, item]));
+  }
+}
+
+export function defineInProgressIgredients(argument, id) {
+  if ((!localStorage.getItem(argument))) {
+    localStorage.setItem(argument, JSON.stringify({}));
+  }
+  const idItem = JSON.parse(localStorage.getItem(argument))[id];
+  if (!idItem) {
+    const prevLocal = JSON.parse(localStorage.getItem(argument));
+    localStorage.setItem(argument, JSON.stringify({
+      ...prevLocal,
+      [id]: {
+        0: false,
+        1: false,
+        2: false,
+        3: false,
+        4: false,
+        5: false,
+        6: false,
+        7: false,
+      },
+    }));
+  }
+}
+
 /* Salve as receitas favoritas no localStorage na chave favoriteRecipes
 
 O formato deve ser [{ id, type, area, category, alcoholicOrNot, name, image }].
 As receitas favoritas devem ser salvas no localStorage na chave
 favoriteRecipes no formato [{ id, type, area, category,
   alcoholicOrNot, name, image }]. */
+
+//   localStorage.setItem('DoneRecipes', JSON.stringify({
+//     Meals: {},
+//     Drinks: {
+//         idDrink: [],
+//     },
+// }));

@@ -37,6 +37,15 @@
   font-weight: 900;
 }
 
+.done-igredient {
+  list-style: none;
+  text-decoration: line-through;
+}
+
+.igredient {
+  list-style: none;
+}
+
 @keyframes shake {
 
   0% {
