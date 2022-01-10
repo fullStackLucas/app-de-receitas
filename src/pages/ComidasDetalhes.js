@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player/youtube';
@@ -15,11 +14,13 @@ function ComidasDetalhes({ match }) {
     medidas, setIngredientes, setMedidas, item, setItem } = useContext(Context);
   const { dataDrinks } = useContext(Context);
   const { id } = match.params;
-  const getFood = async () => {
-    const food = await getReceitasID(id);
-    setItem(food[0]);
-  };
-  useEffect(() => { getFood(); }, []);
+  useEffect(() => {
+    const getFood = async () => {
+      const food = await getReceitasID(id);
+      setItem(food[0]);
+    };
+    getFood();
+  }, [id, setItem]);
 
   // useEffect(() => { console.log(item, 'item consolado'); }, [item])
 
@@ -38,7 +39,7 @@ function ComidasDetalhes({ match }) {
       // console.log(arrayMedidas);
       setMedidas(arrayMedidas);
     }
-  }, [item]);
+  }, [item, setIngredientes, setMedidas]);
   // console.log(item);
 
   return (

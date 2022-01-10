@@ -1,4 +1,8 @@
 /* utilizado em BebidasDetalhes e ComidasDetalhes.js */
+.detalhes {
+  padding: 0 20%;
+}
+
 .iniciar_receita {
   position: fixed;
   width: 100%;
