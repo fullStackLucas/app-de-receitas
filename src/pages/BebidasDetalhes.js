@@ -2,13 +2,13 @@
 import React, { useState, useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { getBebidasID } from '../service/GetBebidas';
-import shareIcon from '../images/shareIcon.svg';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
 import '../style/detalhes.css';
 import Context from '../context/Context';
 import Recommendations from '../components/Recommendations';
 import StartRecipeButton from '../components/StartRecipeButton';
+import ShareBtn from '../components/ShareBtn';
+import FavoriteBtn from '../components/FavoriteBtn';
+import { filterIgredientsOrMeasures } from '../service/Helpers';
 
 function BebidasDetalhes({ match }) {
   const [item, setItem] = useState('');
@@ -26,20 +26,13 @@ function BebidasDetalhes({ match }) {
 
   useEffect(() => {
     if (item) {
-      // a condição verdadeira qdo existe, pq sim!
-      const arrayIngredientes = Object.entries(item) // keys vem só chave, value só valor!
-        .filter((ingrediente) => ingrediente[0].includes('strIngredient')
-        && ingrediente[1]);
-      console.log(arrayIngredientes);
-      setIngredientes(arrayIngredientes);
-
-      const arrayMedidas = Object.entries(item) // keys vem só chave, value só valor!
-        .filter((medida) => medida[0].includes('strMeasure')
-      && medida[1] !== ' ' && medida[1]);
-      console.log(arrayMedidas);
-      setMedidas(arrayMedidas);
+      filterIgredientsOrMeasures(item, 'strIngredient', setIngredientes);
+      filterIgredientsOrMeasures(item, 'strMeasure', setMedidas);
     }
   }, [item]);
+
+  console.log(medidas);
+  console.log(item);
 
   return (
     <div>
@@ -52,32 +45,9 @@ function BebidasDetalhes({ match }) {
 
       <h1 data-testid="recipe-title">{ item.strDrink }</h1>
 
-      <button type="button">
-        <img
-          src={ shareIcon }
-          alt="shareIcon"
-          data-testid="share-btn"
-        />
-        Compartilhar
-      </button>
+      <ShareBtn pathname={ id } type="bebidas" />
 
-      <button type="button">
-        <img
-          src={ whiteHeartIcon }
-          alt="HeartIcon"
-          data-testid="favorite-btn"
-        />
-        Favoritar
-      </button>
-
-      <button type="button">
-        <img
-          src={ blackHeartIcon }
-          alt="HeartIcon"
-          data-testid="favorite-btn"
-        />
-        Favoritar
-      </button>
+      <FavoriteBtn id={ id } />
 
       <p data-testid="recipe-category">
         { item.strAlcoholic }
@@ -90,13 +60,14 @@ function BebidasDetalhes({ match }) {
 
       <ul isCheckbox={ false }>
         Ingredients
-        {ingredientes.map((ingrediente, index) => (
-          <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-            {ingrediente[1]}
-            {' - '}
-            {medidas[index][1]}
-          </li>
-        ))}
+        {ingredientes && ingredientes.map((ingrediente, index) => {
+          console.log(medidas);
+          return (
+            <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+              {`${ingrediente[1]} -  ${medidas[index] ? medidas[index][1] : ''}`}
+            </li>
+          );
+        })}
       </ul>
 
       <p data-testid="instructions">

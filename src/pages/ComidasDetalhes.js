@@ -3,13 +3,12 @@ import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player/youtube';
 import { getReceitasID } from '../service/GetComidas';
-import whiteHeartIcon from '../images/whiteHeartIcon.svg';
-import blackHeartIcon from '../images/blackHeartIcon.svg';
 import Context from '../context/Context';
 import '../style/detalhes.css';
 import ShareBtn from '../components/ShareBtn';
 import Recommendations from '../components/Recommendations';
 import StartRecipeButton from '../components/StartRecipeButton';
+import FavoriteBtn from '../components/FavoriteBtn';
 
 function ComidasDetalhes({ match }) {
   const { ingredientes,
@@ -40,8 +39,7 @@ function ComidasDetalhes({ match }) {
       setMedidas(arrayMedidas);
     }
   }, [item]);
-
-  console.log(item);
+  // console.log(item);
 
   return (
     <div>
@@ -58,34 +56,9 @@ function ComidasDetalhes({ match }) {
         {' '}
       </h2>
 
-      <ShareBtn />
+      <ShareBtn pathname={ id } type="comidas" />
 
-      {/* <button type="button">
-        <img
-          src={ shareIcon }
-          alt="shareIcon"
-          data-testid="share-btn"
-        />
-        Compartilhar
-      </button> */}
-
-      <button type="button">
-        <img
-          src={ whiteHeartIcon }
-          alt="HeartIcon"
-          data-testid="favorite-btn"
-        />
-        Favoritar
-      </button>
-
-      <button type="button">
-        <img
-          src={ blackHeartIcon }
-          alt="HeartIcon"
-          data-testid="favorite-btn"
-        />
-        Favoritar
-      </button>
+      <FavoriteBtn id={ id } />
 
       <ul isCheckbox={ false }>
         Ingredients

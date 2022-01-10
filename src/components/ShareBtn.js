@@ -6,17 +6,18 @@ import shareIcon from '../images/shareIcon.svg';
 // https://www.npmjs.com/package/clipboard-copy
 const copyForShare = require('clipboard-copy');
 
-export default function ShareBtn({ pathname }) { // funcao do componente
+export default function ShareBtn({ type, pathname }) { // funcao do componente que pega as props da pagina de detalhes
   const [clipado, setClipado] = useState(false); // começa sem tá clipado nada
 
   function handleClick() {
-    copyForShare(`http://localhost:3000${pathname}`); // o endereço que vai
+    copyForShare(`http://localhost:3000/${type}/${pathname}`); // o endereço que vai
     setClipado(!clipado); // se não tiver clipado o caminho, ele faz o clipboard-copy
   }
 
   return (
     <alert>
       <button
+        data-testid="share-btn"
         className="share-btn"
         type="button"
         onClick={ handleClick }
@@ -24,7 +25,6 @@ export default function ShareBtn({ pathname }) { // funcao do componente
         <img
           src={ shareIcon }
           alt="shareIcon"
-          data-testid="share-btn"
         />
         Compartilhar
       </button>
@@ -42,5 +42,6 @@ export default function ShareBtn({ pathname }) { // funcao do componente
 }
 
 ShareBtn.propTypes = {
+  type: PropTypes.string.isRequired,
   pathname: PropTypes.string.isRequired,
 };
