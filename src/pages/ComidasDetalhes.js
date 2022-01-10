@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useContext } from 'react';
 import PropTypes from 'prop-types';
 import ReactPlayer from 'react-player/youtube';
@@ -10,9 +11,8 @@ import StartRecipeButton from '../components/StartRecipeButton';
 import FavoriteBtn from '../components/FavoriteBtn';
 
 function ComidasDetalhes({ match }) {
-  const { ingredientes,
-    medidas, setIngredientes, setMedidas, item, setItem } = useContext(Context);
-  const { dataDrinks } = useContext(Context);
+  const { ingredientes, medidas, setIngredientes,
+    setMedidas, item, setItem, dataDrinks } = useContext(Context);
   const { id } = match.params;
   useEffect(() => {
     const getFood = async () => {

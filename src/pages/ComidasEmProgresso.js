@@ -52,7 +52,7 @@ function ComidasEmProgresso({ match }) { // Adicionado match e prop-types
       </h2>
 
       <ShareBtn pathname={ item.idMeal } type="comidas" />
-      <FavoriteBtn id={ item.idMeal } />
+      <FavoriteBtn />
 
       <ul isCheckbox={ false }>
         Ingredients

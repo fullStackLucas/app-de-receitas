@@ -1,4 +1,5 @@
 // Nada testado corretamenta.
+const FAVORITED_RECIPES = 'favoriteRecipes';
 export function isDoneRecipe(id) {
   const recipes = localStorage.getItem('doneRecipes')
     ? JSON.parse(localStorage.getItem('doneRecipes'))
@@ -31,39 +32,40 @@ export function inProgressRecipes() {
 
 // funcao pra saber se é ou não favorita
 export function isFavorited(id) { // é o ID que esta na pagina de detalhes
-  const favorited = localStorage.getItem('favoriteRecipes')
-    ? JSON.parse(localStorage.getItem('favoriteRecipes'))
+  const favorited = localStorage.getItem(FAVORITED_RECIPES)
+    ? JSON.parse(localStorage.getItem(FAVORITED_RECIPES))
     : [];
-  return favorited.some((recipe) => recipe.id === id);
+  return favorited.some((recipe) => recipe[id] === id);
 }
 
 export function setFavoritedItem(item) { // é o ID que esta na pagina de detalhes
   const id = item.idMeal ? item.idMeal : item.idDrink;
-  const type = item.idMeal ? 'idMeal' : 'idDrink'; // CORRIGIR!
+  const type = item.idMeal ? 'comida' : 'bebida';
+  const area = item.idMeal ? item.strArea : '';
   const alcoholicOrNot = item.idMeal ? '' : item.strAlcoholic;
   const name = item.idMeal ? item.strMeal : item.strDrink;
-  const image = '';
+  const image = item.idMeal ? item.strMealThumb : item.strDrinkThumb;
 
   const newItem = {
     id,
     type,
-    area: item.strArea,
+    area,
     category: item.strCategory,
     alcoholicOrNot,
     name,
     image,
   };
   console.log(item, newItem, id, type);
-  if (!localStorage.getItem('favoriteRecipes')) {
-    localStorage.setItem('favoriteRecipes', JSON.stringify([]));
+  if (!localStorage.getItem(FAVORITED_RECIPES)) {
+    localStorage.setItem(FAVORITED_RECIPES, JSON.stringify([]));
   }
-  if (isFavorited(newItem.id)) {
-    const favorite = JSON.parse(localStorage.getItem('favoritedRecipes'))
-      .filter((itemObj) => itemObj[type] !== id);
-    localStorage.setItem('favoriteRecipes', JSON.stringify(favorite));
+  if (isFavorited(newItem[id])) {
+    const favorite = JSON.parse(localStorage.getItem(FAVORITED_RECIPES))
+      .filter((itemObj) => itemObj.id !== id);
+    localStorage.setItem(FAVORITED_RECIPES, JSON.stringify(favorite));
   } else {
-    const favorite = JSON.parse(localStorage.getItem('favoritedRecipes'));
-    localStorage.setItem('favoriteRecipes', JSON.stringify([...favorite, newItem]));
+    const favorite = JSON.parse(localStorage.getItem(FAVORITED_RECIPES));
+    localStorage.setItem(FAVORITED_RECIPES, JSON.stringify([...favorite, newItem]));
   }
 }
 
