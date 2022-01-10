@@ -100,6 +100,14 @@ export async function getRandomComidas() {
   return meals;
 }
 
+export async function getAllIngredientComidas() {
+  const CategoriaComida = 'https://www.themealdb.com/api/json/v1/1/list.php?i=list';
+  const data = await fetch(CategoriaComida);
+  const dataJson = await data.json();
+  const { meals } = dataJson; // a chave que chega nessa requisição é meals.
+  return meals;
+}
+
 /* API Methods using the developer test key '1' as the API key
 
 Search meal by name
