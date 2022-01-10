@@ -1,0 +1,15 @@
+.category-buttons {
+  display: grid;
+  gap: 0.1rem;
+  grid-template-columns: repeat(6, minmax(100px, 12.5%));
+  justify-content: center;
+  width: 100%;
+}
+
+@media screen and ( max-width : 720px ) {
+
+  .category-buttons {
+    align-items: center;
+    grid-template-columns: 99%;
+  }
+}
