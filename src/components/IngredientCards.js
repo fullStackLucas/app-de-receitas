@@ -1,23 +1,39 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import '../style/cards.css';
+import Context from '../context/Context';
 import { Link } from 'react-router-dom';
+import { getComidaIngrediente } from '../service/GetComidas';
+import { getBebidasIngrediente} from '../service/GetBebidas'
 
 function IngredientCards({ item, index }) {
-  const renderCards = (food, portugueseFood) => (
+  const { setDataMeals, setDataDrinks } = useContext(Context); 
+  const foodSubmit = async (inputValue) => {
+    if(item.strIngredient) {
+      const response = await getComidaIngrediente(inputValue)
+      await setDataMeals(response);
+
+    } else {
+      const response = await getBebidasIngrediente(inputValue);
+      await setDataDrinks(response);
+    }
+  }
+
+  const renderCards = (ingredient, portugueseFood, site) => (
     <div className="card" data-testid={ `${index}-ingredient-card` }>
       <p
         className="card_name"
         data-testid={ `${index}-card-name` } 
       >
-        { item[`str${food}`] }
+        { item[ingredient] }
       </p>
-      <Link to={ `/${portugueseFood}/${item[`id${food}`]}` }>
+      <Link to={ `/${portugueseFood}` }>
         <img
           className="card_img"
-          alt={ item[`str${food}`] }
-          src={ item[`str${food}Thumb`] }
+          alt={ item[ingredient] }
+          src={ `https://www.${site}.com/images/ingredients/${item[ingredient]}-Small.png` }
           data-testid={ `${index}-card-img` }
+          onClick={() => { foodSubmit(item[ingredient]); console.log('AA') }}
         />
       </Link>
       <div className="card_overlay">
@@ -27,7 +43,7 @@ function IngredientCards({ item, index }) {
   );
 
   return (
-    item.idMeal ? renderCards('Meal', 'comidas') : renderCards('Drink', 'bebidas')
+    item.strIngredient ? renderCards('strIngredient', 'comidas', 'themealdb') : renderCards('strIngredient1', 'bebidas', 'thecocktaildb')
   );
 }
 

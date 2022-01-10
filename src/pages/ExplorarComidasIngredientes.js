@@ -1,14 +1,20 @@
-import React, { useContext } from 'react';
-import Context from '../context/Context';
+import React, { useState, useEffect } from 'react';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import IngredientCards from '../components/IngredientCards'; 
-// import { getComidaIngrediente } from '../service/GetComidas';
+import { getAllIngredientComidas } from '../service/GetComidas';
+import { getAllIngredienteBebidas } from '../service/GetBebidas';
 
 function ExplorarComidasIngredientes() {
-  const { dataMeals } = useContext(Context);
+  const [ dataMeals, setDataMeals] = useState([]);
   const MAX_LENGTH_MEALS = 12;
   const meals = dataMeals.slice(0, MAX_LENGTH_MEALS);
+  useEffect(() => {
+    getAllIngredientComidas().then((response) => setDataMeals(response));
+    getAllIngredientComidas().then((response) => console.log(response));
+    getAllIngredienteBebidas().then((response) => console.log('b', response));
+  }, []);
+
   return (
     <>
       <Header

@@ -65,6 +65,14 @@ export async function getRandonBebidas() { // testada!
   const { drinks } = dataJson; // retorno da API - chave drinks
   return drinks;
 }
+
+export async function getAllIngredienteBebidas() { // testada!
+  const APIBebibdas = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list';
+  const data = await fetch(APIBebibdas);
+  const dataJson = await data.json();
+  const { drinks } = dataJson; // retorno da API - chave drinks
+  return drinks;
+}
 /*
 API Methods using the developer test key '1' as the API key
 
