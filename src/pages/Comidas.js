@@ -17,7 +17,7 @@ function Comidas() {
       <CategoryButtons categoryName="Comidas" />
       <div className="cards">
         {meals.map((meal, index) => (
-          <Cards item={ meal } index={ index } key={ meal.idMeals } />
+          <Cards item={ meal } index={ index } key={ meal.idMeal } />
         ))}
       </div>
       <Footer />

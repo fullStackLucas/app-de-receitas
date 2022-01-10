@@ -29,13 +29,13 @@ function ComidasDetalhes({ match }) {
       const arrayIngredientes = Object.entries(item) // keys vem só chave, value só valor!
         .filter((ingrediente) => ingrediente[0].includes('strIngredient')
         && ingrediente[1]);
-      console.log(arrayIngredientes);
+      // console.log(arrayIngredientes);
       setIngredientes(arrayIngredientes);
 
       const arrayMedidas = Object.entries(item) // keys vem só chave, value só valor!
         .filter((medida) => medida[0].includes('strMeasure')
       && medida[1] !== ' ' && medida[1]);
-      console.log(arrayMedidas);
+      // console.log(arrayMedidas);
       setMedidas(arrayMedidas);
     }
   }, [item]);
@@ -60,7 +60,8 @@ function ComidasDetalhes({ match }) {
 
       <FavoriteBtn />
 
-      <ul isCheckbox={ false }>
+      { /* isCheckbox={ false }  dentro de ul gerando warning */ }
+      <ul>
         Ingredients
         {ingredientes.map((ingrediente, index) => (
           <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>

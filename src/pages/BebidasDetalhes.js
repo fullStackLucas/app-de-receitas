@@ -53,7 +53,7 @@ function BebidasDetalhes({ match }) {
 
       <ShareBtn pathname={ id } type="bebidas" />
 
-      <FavoriteBtn id={ id } />
+      <FavoriteBtn />
 
       <p data-testid="recipe-category">
         { item.strAlcoholic }

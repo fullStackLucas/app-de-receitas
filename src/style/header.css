@@ -3,12 +3,11 @@ header {
   display: grid;
   grid-template-areas: 'perfil titulo busca';
   grid-template-columns: 1fr 1fr 1fr;
-  justify-content: space-around;
+  margin: 0 12%;
 }
 
 .profile-area-btn {
   grid-area: perfil;
-  margin-left: 5px;
 }
 
 header h2 {
@@ -19,12 +18,21 @@ header h2 {
   grid-area: busca;
 }
 
+.profile-btn {
+  width: 100%;
+}
+
+.search-btn {
+  width: 100%;
+}
+
 
 @media screen and ( max-width : 720px ) {
 
   header {
     background-color: gainsboro;
     justify-content: space-between;
+    margin: 0 0.5%;
   }
 
   .profile-btn {

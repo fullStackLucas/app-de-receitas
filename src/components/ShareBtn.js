@@ -15,7 +15,7 @@ export default function ShareBtn({ type, pathname }) { // funcao do componente q
   }
 
   return (
-    <alert>
+    <>
       <button
         data-testid="share-btn"
         className="share-btn"
@@ -37,7 +37,7 @@ export default function ShareBtn({ type, pathname }) { // funcao do componente q
           {/* // mensagem do alerta */}
         </Alert>
       ) }
-    </alert>
+    </>
   );
 }
 
