@@ -22,8 +22,6 @@ function ComidasDetalhes({ match }) {
     getFood();
   }, [id, setItem]);
 
-  // useEffect(() => { console.log(item, 'item consolado'); }, [item])
-
   useEffect(() => {
     if (item) {
       // a condição verdadeira qdo existe, pq sim!
