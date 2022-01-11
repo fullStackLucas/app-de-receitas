@@ -4,34 +4,42 @@ import Header from '../components/Header';
 import Search from '../components/Search';
 import Context from '../context/Context';
 import Cards from '../components/Cards';
-import { getComidasArea } from '../service/GetComidas';
+import { getComidasArea, getFilteredArea } from '../service/GetComidas';
 
 function ExplorarComidasArea() {
   const [areas, setAreas] = useState([]);
-  const { isSearchAvaliable, dataMeals } = useContext(Context);
+  const { isSearchAvaliable, dataMeals, setDataMeals } = useContext(Context);
   const MAX_LENGTH_MEALS = 12;
   const meals = dataMeals.slice(0, MAX_LENGTH_MEALS);
-  const getAreas = async () => {
-    const areaList = await getComidasArea();
-    setAreas(areaList);
+  useEffect(() => {
+    getComidasArea().then((response) => setAreas(response));
+  }, []);
+  const setFilter = ({ target }) => {
+    const { value } = target;
+    getFilteredArea(value).then((response) => setDataMeals([...response]));
   };
-  useEffect(() => getAreas(), []);
-  console.log(areas);
 
   return (
     <>
       <Header title="Explorar Origem" />
       { isSearchAvaliable && <Search title="Comidas" /> }
       <select name="area" data-testid="explore-by-area-dropdown">
+        <option
+          value="All"
+          data-testid="All-option"
+          onClick={ setFilter }
+        >
+          All
+        </option>
         { areas.map(({ strArea }, index) => (
           <option
             value={ strArea }
             key={ index }
             data-testid={ `${strArea}-option` }
+            onClick={ setFilter }
           >
             { strArea }
           </option>
-
         ))}
       </select>
       <div className="cards">
