@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { getBebidasID } from '../service/GetBebidas';
 import Context from '../context/Context';
 import ShareBtn from '../components/ShareBtn';
@@ -13,10 +14,12 @@ import '../App.css';
 function BebidasEmProgresso({ match }) {
   const { ingredientes, medidas, item, setItem, setIngredientes,
     setMedidas } = useContext(Context);
+  const history = useHistory();
   const { id } = match.params;
   const [isChecked, toggleChecked] = useState(
     searchFromLocalStorageById('drinksInProgress', id),
   );
+  const [isFinishBtnDisabled, toogleFinishBtn] = useState(true);
 
   useEffect(() => {
     getBebidasID(id).then((response) => setItem(response[0]));
@@ -29,7 +32,11 @@ function BebidasEmProgresso({ match }) {
       ...prevState,
       [id]: isChecked,
     }));
-  }, [isChecked]);
+    const comparison = ingredientes
+      .every((ingrediente, index) => isChecked[index]);
+    console.log(comparison);
+    toogleFinishBtn(!comparison);
+  }, [isChecked, ingredientes]);
 
   useEffect(() => {
     if (item) {
@@ -38,7 +45,6 @@ function BebidasEmProgresso({ match }) {
     }
   }, [item]);
 
-  console.log(item);
   return (
     <>
       {item && (
@@ -84,7 +90,12 @@ function BebidasEmProgresso({ match }) {
         { item.strInstructions }
       </p>
 
-      <button type="button" data-testid="finish-recipe-btn">
+      <button
+        type="button"
+        data-testid="finish-recipe-btn"
+        disabled={ isFinishBtnDisabled }
+        onClick={ () => history.push('/receitas-feitas') }
+      >
         Finalizar
       </button>
 

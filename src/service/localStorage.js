@@ -109,10 +109,3 @@ O formato deve ser [{ id, type, area, category, alcoholicOrNot, name, image }].
 As receitas favoritas devem ser salvas no localStorage na chave
 favoriteRecipes no formato [{ id, type, area, category,
   alcoholicOrNot, name, image }]. */
-
-//   localStorage.setItem('DoneRecipes', JSON.stringify({
-//     Meals: {},
-//     Drinks: {
-//         idDrink: [],
-//     },
-// }));
