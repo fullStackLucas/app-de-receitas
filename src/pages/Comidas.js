@@ -11,17 +11,19 @@ function Comidas() {
   const MAX_LENGTH_MEALS = 12;
   const meals = dataMeals.slice(0, MAX_LENGTH_MEALS);
   return (
-    <div>
-      <Header title="Comidas" />
-      { isSearchAvaliable && <Search title="Comidas" /> }
-      <CategoryButtons categoryName="Comidas" />
-      <div className="cards">
-        {meals.map((meal, index) => (
-          <Cards item={ meal } index={ index } key={ meal.idMeal } />
-        ))}
+    <>
+      <div className="pages">
+        <Header title="Comidas" />
+        { isSearchAvaliable && <Search title="Comidas" /> }
+        <CategoryButtons categoryName="Comidas" />
+        <div className="cards">
+          {meals.map((meal, index) => (
+            <Cards item={ meal } index={ index } key={ meal.idMeal } />
+          ))}
+        </div>
       </div>
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -1,6 +1,16 @@
 /* utilizado em BebidasDetalhes e ComidasDetalhes.js */
 .detalhes {
-  padding: 0 20%;
+  background-color: rgba(255, 255, 255, 0.925);
+  margin: 0 10vh;
+}
+
+.detalhes ul {
+  list-style: none;
+  width: 100%;
+}
+
+.detalhes ul li:hover {
+  background-color: gainsboro;
 }
 
 .iniciar_receita {
@@ -25,7 +35,7 @@
 }
 
 iframe {
-  width: 40%;
+  width: 80%;
 }
 
 .top-img {
@@ -36,7 +46,11 @@ iframe {
   margin-bottom: 20px;
 }
 
-@media screen and ( max-width : 400px ) {
+@media screen and ( max-width : 700px ) {
+
+  .detalhes {
+    margin: 0;
+  }
 
   .iniciar_receita button {
     bottom: 0;
