@@ -42,47 +42,49 @@ function ComidasDetalhes({ match }) {
 
   return (
     <div>
-      <img
-        className="top-img"
-        data-testid="recipe-photo"
-        alt="img"
-        src={ item.strMealThumb }
-      />
+      <div className="detalhes">
+        <img
+          className="top-img"
+          data-testid="recipe-photo"
+          alt="img"
+          src={ item.strMealThumb }
+        />
 
-      <h1 data-testid="recipe-title">{ item.strMeal }</h1>
-      <h2 data-testid="recipe-category">
-        { item.strCategory }
-        {' '}
-      </h2>
+        <h1 data-testid="recipe-title">{ item.strMeal }</h1>
+        <h2 data-testid="recipe-category">
+          { item.strCategory }
+          {' '}
+        </h2>
 
-      <ShareBtn pathname={ id } type="comidas" />
+        <ShareBtn pathname={ id } type="comidas" />
 
-      <FavoriteBtn id={ id } />
+        <FavoriteBtn id={ id } />
 
-      { /* isCheckbox={ false }  dentro de ul gerando warning */ }
-      <ul>
-        Ingredients
-        {ingredientes.map((ingrediente, index) => (
-          <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-            {ingrediente[1]}
-            {' - '}
-            {medidas[index][1]}
-          </li>
-        ))}
-      </ul>
+        { /* isCheckbox={ false }  dentro de ul gerando warning */ }
+        <ul>
+          Ingredients
+          {ingredientes.map((ingrediente, index) => (
+            <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+              {ingrediente[1]}
+              {' - '}
+              {medidas[index][1]}
+            </li>
+          ))}
+        </ul>
 
-      <p data-testid="instructions">
-        Instructions
-        { item.strInstructions }
-      </p>
+        <p data-testid="instructions">
+          Instructions
+          { item.strInstructions }
+        </p>
 
-      <ReactPlayer
-        className="player"
-        data-testid="video"
-        width="100%"
-        url={ item.strYoutube }
-      />
-      <Recommendations items={ dataDrinks } />
+        <ReactPlayer
+          className="player"
+          data-testid="video"
+          width="100%"
+          url={ item.strYoutube }
+        />
+        <Recommendations items={ dataDrinks } />
+      </div>
       <StartRecipeButton id={ id } type="comidas" />
     </div>
   );

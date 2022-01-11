@@ -33,47 +33,49 @@ function BebidasDetalhes({ match }) {
 
   return (
     <div>
-      <img
-        className="top-img"
-        data-testid="recipe-photo"
-        alt="img"
-        src={ item.strDrinkThumb }
-      />
+      <div className="detalhes">
+        <img
+          className="top-img"
+          data-testid="recipe-photo"
+          alt="img"
+          src={ item.strDrinkThumb }
+        />
 
-      <h1 data-testid="recipe-title">{ item.strDrink }</h1>
+        <h1 data-testid="recipe-title">{ item.strDrink }</h1>
 
-      <ShareBtn pathname={ id } type="bebidas" />
+        <ShareBtn pathname={ id } type="bebidas" />
 
-      <FavoriteBtn id={ id } />
+        <FavoriteBtn id={ id } />
 
-      <p data-testid="recipe-category">
-        { item.strAlcoholic }
-        {' '}
-      </p>
+        <p data-testid="recipe-category">
+          { item.strAlcoholic }
+          {' '}
+        </p>
 
-      {/*   <ol data-testid="`${index}-ingredient-name-and-measure`">
+        {/*   <ol data-testid="`${index}-ingredient-name-and-measure`">
         ingredientes
       </ol> */}
 
-      <ul isCheckbox={ false }>
-        Ingredients
-        {ingredientes && ingredientes.map((ingrediente, index) => {
-          console.log(medidas);
-          return (
-            <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
-              {`${ingrediente[1]} -  ${medidas[index] ? medidas[index][1] : ''}`}
-            </li>
-          );
-        })}
-      </ul>
+        <ul isCheckbox={ false }>
+          Ingredients
+          {ingredientes && ingredientes.map((ingrediente, index) => {
+            console.log(medidas);
+            return (
+              <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
+                {`${ingrediente[1]} -  ${medidas[index] ? medidas[index][1] : ''}`}
+              </li>
+            );
+          })}
+        </ul>
 
-      <p data-testid="instructions">
-        {' '}
-        { item.strInstructions }
-        {' '}
-      </p>
+        <p data-testid="instructions">
+          {' '}
+          { item.strInstructions }
+          {' '}
+        </p>
 
-      <Recommendations items={ dataMeals } />
+        <Recommendations items={ dataMeals } />
+      </div>
       <StartRecipeButton id={ id } type="bebidas" />
     </div>
   );

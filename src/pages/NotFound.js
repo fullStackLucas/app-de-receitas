@@ -35,7 +35,10 @@ function NotFound() {
   );
   return (
     <div className="not_found">
-      <div className="title_not_found"><h1>Página não encontrada</h1></div>
+      <div className="title_not_found">
+        <h1>Página não encontrada</h1>
+        <span>Not Found</span>
+      </div>
       <div className="cards_not_found">
         { renderCards(itens[0])}
         { renderCards(itens[1])}

@@ -9,6 +9,7 @@ import FavoriteBtn from '../components/FavoriteBtn';
 import { filterIgredientsOrMeasures,
   checkTarget, searchFromLocalStorageById } from '../service/Helpers';
 import { defineInProgressIgredients } from '../service/localStorage';
+import '../style/detalhes.css';
 import '../App.css';
 
 function ComidasEmProgresso({ match }) {
@@ -47,7 +48,7 @@ function ComidasEmProgresso({ match }) {
 
   console.log(item);
   return (
-    <>
+    <div className="detalhes">
       {item && (
         <img data-testid="recipe-photo" alt="img" src={ item.strMealThumb } />
       )}
@@ -100,7 +101,7 @@ function ComidasEmProgresso({ match }) {
         Finalizar
       </button>
 
-    </>
+    </div>
   );
 }
 
