@@ -8,3 +8,4 @@ Enzo Farias - https://github.com/fariasao;
 Lucas Pinheiro - https://github.com/fullStackLucas;
 Vinícius Santana - https://github.com/viniciusantana;
 
+CSS feito majoritariamente por Vinícius Santana;
