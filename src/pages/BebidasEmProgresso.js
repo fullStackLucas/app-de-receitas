@@ -46,22 +46,26 @@ function BebidasEmProgresso({ match }) {
   }, [item]);
 
   return (
-    <>
-      {item && (
-        <img data-testid="recipe-photo" alt="img" src={ item.strDrinkThumb } />
-      )}
-
-      <h1 data-testid="recipe-title">{item.strDrink}</h1>
-      <h2 data-testid="recipe-category">
+    <div className="detalhes">
+      <h1 data-testid="recipe-title" className="detail-title">{item.strDrink}</h1>
+      <h2 data-testid="recipe-category" className="detail-category">
         { item.strCategory }
         {' '}
       </h2>
-
-      <ShareBtn pathname={ item.idDrink } type="bebidas" />
-      <FavoriteBtn id={ id } />
-
+      {item && (
+        <img
+          className="top-img"
+          data-testid="recipe-photo"
+          alt="img"
+          src={ item.strDrinkThumb }
+        />
+      )}
+      <div>
+        <ShareBtn pathname={ item.idDrink } type="bebidas" />
+        <FavoriteBtn id={ id } />
+      </div>
       <ul isCheckbox={ false }>
-        Ingredients
+        <h3 className="detail-h3">Ingredients</h3>
         {ingredientes.map((ingrediente, index) => (
           <li
             key={ index }
@@ -84,13 +88,13 @@ function BebidasEmProgresso({ match }) {
           </li>
         ))}
       </ul>
-
+      <h3 className="detail-h3">Modo de Preparo</h3>
       <p data-testid="instructions">
         Instructions
         { item.strInstructions }
       </p>
-
       <button
+        className="finish btn btn-primary btn-lg btn-block"
         type="button"
         data-testid="finish-recipe-btn"
         disabled={ isFinishBtnDisabled }
@@ -99,7 +103,7 @@ function BebidasEmProgresso({ match }) {
         Finalizar
       </button>
 
-    </>
+    </div>
   );
 }
 

@@ -1,1 +1,35 @@
 /* Perfil */
+.perfil {
+  background-color: rgba(255, 255, 255, 0.925);
+  height: 100%;
+  margin: 0 10%;
+  position: fixed;
+  width: 80%;
+}
+
+.perfil-btn {
+  font-size: 2em;
+  font-weight: 700;
+  height: 50%;
+  margin: 5%;
+  width: 40%;
+}
+
+@media screen and ( max-width : 800px ) {
+
+  .perfil {
+    background-color: rgba(255, 255, 255, 0.925);
+    margin: 0;
+    position: fixed;
+    width: 100%;
+  }
+
+  .perfil-btn {
+    font-size: 1.1em;
+    font-weight: 700;
+    height: 30%;
+    margin: 1%;
+    width: 45%;
+  }
+
+}

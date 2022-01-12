@@ -49,21 +49,20 @@ function ComidasEmProgresso({ match }) {
   console.log(item);
   return (
     <div className="detalhes">
-      {item && (
-        <img data-testid="recipe-photo" alt="img" src={ item.strMealThumb } />
-      )}
-
-      <h1 data-testid="recipe-title">{item.strMeal}</h1>
-      <h2 data-testid="recipe-category">
+      <h1 data-testid="recipe-title" className="detail-title">{item.strMeal}</h1>
+      <h2 data-testid="recipe-category" className="detail-category">
         { item.strCategory }
         {' '}
       </h2>
-
-      <ShareBtn pathname={ item.idMeal } type="comidas" />
-      <FavoriteBtn id={ id } />
-
+      {item && (
+        <img data-testid="recipe-photo" alt="img" src={ item.strMealThumb } />
+      )}
+      <div>
+        <ShareBtn pathname={ item.idMeal } type="comidas" />
+        <FavoriteBtn id={ id } />
+      </div>
       <ul isCheckbox={ false }>
-        Ingredients
+        <h3 className="detail-h3">Ingredients</h3>
         {ingredientes.map((ingrediente, index) => (
           <li
             key={ index }
@@ -86,13 +85,14 @@ function ComidasEmProgresso({ match }) {
           </li>
         ))}
       </ul>
-
-      <p data-testid="instructions">
+      <h3 className="detail-h3">Modo de Preparo</h3>
+      <p data-testid="instructions" className="detail-instruction">
         Instructions
         { item.strInstructions }
       </p>
 
       <button
+        className="finish btn btn-primary btn-lg btn-block"
         type="button"
         data-testid="finish-recipe-btn"
         disabled={ isFinishBtnDisabled }

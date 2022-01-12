@@ -16,18 +16,6 @@ export default function ShareBtn({ type, pathname }) { // funcao do componente q
 
   return (
     <>
-      <button
-        data-testid="share-btn"
-        className="share-btn"
-        type="button"
-        onClick={ handleClick }
-      >
-        <img
-          src={ shareIcon }
-          alt="shareIcon"
-        />
-        Compartilhar
-      </button>
       { clipado && (
         <Alert variant="success">
           {' '}
@@ -37,6 +25,18 @@ export default function ShareBtn({ type, pathname }) { // funcao do componente q
           {/* // mensagem do alerta */}
         </Alert>
       ) }
+      <button
+        data-testid="share-btn"
+        className="share-btn btn btn-lg"
+        type="button"
+        onClick={ handleClick }
+      >
+        <img
+          src={ shareIcon }
+          alt="shareIcon"
+        />
+        Compartilhar
+      </button>
     </>
   );
 }

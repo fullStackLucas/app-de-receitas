@@ -1,9 +1,11 @@
 header {
-  background-color: rgba(255, 255, 255, 0.541);
+
+  /* background-color: rgba(255, 255, 255, 0.541); */
+  background-color: gainsboro;
   display: grid;
-  grid-template-areas: 'perfil titulo busca';
-  grid-template-columns: 1fr 1fr 1fr;
-  margin: 0 12%;
+  gap: 0.1rem;
+  grid-template-areas: ' . perfil titulo busca .';
+  margin: 0;
 }
 
 .profile-area-btn {
@@ -11,6 +13,7 @@ header {
 }
 
 header h2 {
+  font-weight: 700;
   grid-area: titulo;
 }
 
@@ -44,7 +47,7 @@ header h2 {
   }
 }
 
-@media screen and ( max-width : 360px ) {
+@media screen and ( max-width : 420px ) {
 
   header {
     grid-template-areas: 'titulo'

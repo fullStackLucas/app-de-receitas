@@ -54,7 +54,7 @@ function CategoryButtons({ categoryName }) {
       arrayToMap.map((category) => (
         <button
           data-testid={ `${category.strCategory}-category-filter` }
-          className="btn btn-secondary"
+          className={ `btn btn-outline-dark ${category.strCategory}-btn` }
           type="button"
           key={ category.strCategory }
           onClick={ () => onClickButton(categoryName, category.strCategory) }
@@ -75,7 +75,7 @@ function CategoryButtons({ categoryName }) {
     <div className="category-buttons">
       {renderButtons(categoryName)}
       <button
-        className="btn btn-secondary"
+        className="btn btn-outline-dark all-btn"
         data-testid="All-category-filter"
         type="button"
         onClick={ () => isNameDuplicated(categoryName) }

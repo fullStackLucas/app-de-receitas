@@ -17,15 +17,17 @@ function ExplorarComidasIngredientes() {
 
   return (
     <>
-      <Header
-        title="Explorar Ingredientes"
-        btnAvaliable={ false }
-      />
+      <div className="pages">
+        <Header
+          title="Explorar Ingredientes"
+          btnAvaliable={ false }
+        />
 
-      <div className="cards">
-        {meals.map((meal, index) => (
-          <IngredientCards item={ meal } index={ index } key={ meal.idMeal } />
-        ))}
+        <div className="cards">
+          {meals.map((meal, index) => (
+            <IngredientCards item={ meal } index={ index } key={ meal.idMeal } />
+          ))}
+        </div>
       </div>
 
       <Footer />
