@@ -13,13 +13,15 @@ function Bebidas() {
 
   return (
     <div>
-      <Header title="Bebidas" />
-      { isSearchAvaliable && <Search title="Bebidas" /> }
-      <CategoryButtons categoryName="Bebidas" />
-      <div className="cards">
-        {drinks.map((drink, index) => (
-          <Cards item={ drink } index={ index } key={ drink.idDrink } />
-        ))}
+      <div className="pages">
+        <Header title="Bebidas" />
+        { isSearchAvaliable && <Search title="Bebidas" /> }
+        <CategoryButtons categoryName="Bebidas" />
+        <div className="cards">
+          {drinks.map((drink, index) => (
+            <Cards item={ drink } index={ index } key={ drink.idDrink } />
+          ))}
+        </div>
       </div>
       <Footer />
     </div>

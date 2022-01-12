@@ -15,15 +15,17 @@ function ExplorarBebidasIngredientes() {
 
   return (
     <>
-      <Header
-        title="Explorar Ingredientes"
-        btnAvaliable={ false }
-      />
+      <div className="pages">
+        <Header
+          title="Explorar Ingredientes"
+          btnAvaliable={ false }
+        />
 
-      <div className="cards">
-        {drinks.map((drink, index) => (
-          <IngredientCards item={ drink } index={ index } key={ index } />
-        ))}
+        <div className="cards">
+          {drinks.map((drink, index) => (
+            <IngredientCards item={ drink } index={ index } key={ index } />
+          ))}
+        </div>
       </div>
 
       <Footer />

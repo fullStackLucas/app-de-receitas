@@ -1,0 +1,35 @@
+.search-form {
+  background-color: rgba(193, 171, 194, 0.603);
+  padding: 20px;
+}
+
+.search-radios label {
+  margin: 4px;
+}
+
+/*
+.search-input {
+  border-right: 5px;
+} */
+
+.search-group {
+  display: grid;
+  gap: 5px;
+  grid-template-columns: 80% 20%;
+  margin: 0 20%;
+  text-align: center;
+}
+
+@media screen and ( max-width : 720px ) {
+
+  .search-form {
+    padding: 7px;
+  }
+
+  .search-group {
+    background-color: honeydew;
+    grid-template-columns: 1fr;
+    margin: 0;
+
+  }
+}

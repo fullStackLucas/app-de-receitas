@@ -21,31 +21,33 @@ function ExplorarComidasArea() {
 
   return (
     <>
-      <Header title="Explorar Origem" />
-      { isSearchAvaliable && <Search title="Comidas" /> }
-      <select name="area" data-testid="explore-by-area-dropdown">
-        <option
-          value="All"
-          data-testid="All-option"
-          onClick={ setFilter }
-        >
-          All
-        </option>
-        { areas.map(({ strArea }, index) => (
+      <div className="pages">
+        <Header title="Explorar Origem" />
+        { isSearchAvaliable && <Search title="Comidas" /> }
+        <select name="area" data-testid="explore-by-area-dropdown">
           <option
-            value={ strArea }
-            key={ index }
-            data-testid={ `${strArea}-option` }
+            value="All"
+            data-testid="All-option"
             onClick={ setFilter }
           >
-            { strArea }
+            All
           </option>
-        ))}
-      </select>
-      <div className="cards">
-        {meals.map((meal, index) => (
-          <Cards item={ meal } index={ index } key={ meal.idMeal } />
-        ))}
+          { areas.map(({ strArea }, index) => (
+            <option
+              value={ strArea }
+              key={ index }
+              data-testid={ `${strArea}-option` }
+              onClick={ setFilter }
+            >
+              { strArea }
+            </option>
+          ))}
+        </select>
+        <div className="cards">
+          {meals.map((meal, index) => (
+            <Cards item={ meal } index={ index } key={ meal.idMeal } />
+          ))}
+        </div>
       </div>
       <Footer />
     </>

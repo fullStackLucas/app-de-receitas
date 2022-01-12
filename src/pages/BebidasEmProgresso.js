@@ -46,9 +46,14 @@ function BebidasEmProgresso({ match }) {
   }, [item]);
 
   return (
-    <>
+    <div className="detalhes">
       {item && (
-        <img data-testid="recipe-photo" alt="img" src={ item.strDrinkThumb } />
+        <img
+          className="top-img"
+          data-testid="recipe-photo"
+          alt="img"
+          src={ item.strDrinkThumb }
+        />
       )}
 
       <h1 data-testid="recipe-title">{item.strDrink}</h1>
@@ -89,8 +94,8 @@ function BebidasEmProgresso({ match }) {
         Instructions
         { item.strInstructions }
       </p>
-
       <button
+        className="finish btn btn-primary btn-lg btn-block"
         type="button"
         data-testid="finish-recipe-btn"
         disabled={ isFinishBtnDisabled }
@@ -99,7 +104,7 @@ function BebidasEmProgresso({ match }) {
         Finalizar
       </button>
 
-    </>
+    </div>
   );
 }
 

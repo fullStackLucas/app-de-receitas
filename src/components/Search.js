@@ -4,6 +4,7 @@ import { useHistory } from 'react-router';
 import Context from '../context/Context';
 import { getBebidasIngrediente, getBebidasNomeLetra } from '../service/GetBebidas';
 import { getComidaIngrediente, getComidaNomeLetra } from '../service/GetComidas';
+import '../style/search.css';
 
 function Search({ title }) {
   const [inputValue, setInputValue] = useState('');
@@ -33,20 +34,27 @@ function Search({ title }) {
   };
 
   return (
-    <form onSubmit={ formSubmit }>
-      <input
-        data-testid="search-input"
-        value={ inputValue }
-        type="text"
-        onChange={ ({ target }) => { setInputValue(target.value); } }
-      />
-      <button
-        type="submit"
-        data-testid="exec-search-btn"
+    <form className="search-form" onSubmit={ formSubmit }>
+      <div className="search-group">
+        <input
+          className="form-control search-input"
+          data-testid="search-input"
+          value={ inputValue }
+          type="text"
+          onChange={ ({ target }) => { setInputValue(target.value); } }
+        />
+        <button
+          className="btn btn-dark"
+          type="submit"
+          data-testid="exec-search-btn"
+        >
+          Buscar
+        </button>
+      </div>
+      <div
+        className="search-radios"
+        onChange={ ({ target }) => { setRadioValue(target.value); } }
       >
-        Buscar
-      </button>
-      <div onChange={ ({ target }) => { setRadioValue(target.value); } }>
         <label htmlFor="ingredient-radio">
           <input
             type="radio"

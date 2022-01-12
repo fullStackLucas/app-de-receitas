@@ -93,6 +93,7 @@ function ComidasEmProgresso({ match }) {
       </p>
 
       <button
+        className="finish btn btn-primary btn-lg btn-block"
         type="button"
         data-testid="finish-recipe-btn"
         disabled={ isFinishBtnDisabled }

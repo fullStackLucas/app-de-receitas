@@ -5,31 +5,33 @@ import Header from '../components/Header';
 
 function Explorar() {
   return (
-    <div>
-      <Header
-        title="Explorar"
-        btnAvaliable={ false }
-      />
-      <Link to="/explorar/comidas">
-        <button
-          type="button"
-          data-testid="explore-food"
-        >
-          Explorar Comidas
-        </button>
-      </Link>
+    <>
+      <div className="pages">
+        <Header
+          title="Explorar"
+          btnAvaliable={ false }
+        />
+        <Link to="/explorar/comidas">
+          <button
+            type="button"
+            data-testid="explore-food"
+          >
+            Explorar Comidas
+          </button>
+        </Link>
 
-      <Link to="/explorar/bebidas">
-        <button
-          type="button"
-          data-testid="explore-drinks"
-        >
-          Explorar Bebidas
-        </button>
-      </Link>
+        <Link to="/explorar/bebidas">
+          <button
+            type="button"
+            data-testid="explore-drinks"
+          >
+            Explorar Bebidas
+          </button>
+        </Link>
 
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
 

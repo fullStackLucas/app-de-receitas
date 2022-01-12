@@ -13,31 +13,33 @@ function ExplorarBebidas() {
   };
   return (
     <>
-      <Header
-        title="Explorar Bebidas"
-        btnAvaliable={ false }
-      />
-      <Link to="/explorar/bebidas/ingredientes">
+      <div className="detalhes">
+        <Header
+          title="Explorar Bebidas"
+          btnAvaliable={ false }
+        />
+        <Link to="/explorar/bebidas/ingredientes">
+          <button
+            type="button"
+            data-testid="explore-by-ingredient"
+          >
+            Por Ingredientes
+          </button>
+        </Link>
+
+        {/*
+          Ao clicar no botão "Me Surpreenda!" da tela de explorar bebidas a
+          rota muda para a página de detalhes de uma bebida aleatória
+          obtida através do endpoint https://www.thecocktaildb.com/api/json/v1/1/random.php.>
+        */}
         <button
           type="button"
-          data-testid="explore-by-ingredient"
+          data-testid="explore-surprise"
+          onClick={ randomDrink }
         >
-          Por Ingredientes
+          Me Surpreenda!
         </button>
-      </Link>
-
-      {/*
-        Ao clicar no botão "Me Surpreenda!" da tela de explorar bebidas a
-        rota muda para a página de detalhes de uma bebida aleatória
-        obtida através do endpoint https://www.thecocktaildb.com/api/json/v1/1/random.php.>
-      */}
-      <button
-        type="button"
-        data-testid="explore-surprise"
-        onClick={ randomDrink }
-      >
-        Me Surpreenda!
-      </button>
+      </div>
       <Footer />
     </>
   );

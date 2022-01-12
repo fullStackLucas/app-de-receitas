@@ -1,12 +1,12 @@
 /* utilizado em BebidasDetalhes e ComidasDetalhes.js */
 .detalhes {
   background-color: rgba(255, 255, 255, 0.925);
-  margin: 0 10vh;
+  margin: 0 10%;
 }
 
 .detalhes ul {
   list-style: none;
-  width: 100%;
+  padding: 0;
 }
 
 .detalhes ul li:hover {
@@ -19,9 +19,24 @@
 }
 
 .iniciar_receita button {
-  bottom: 5px;
+  border-radius: 0;
+  bottom: 0;
+  height: 40px;
   position: fixed;
-  width: 40%;
+  width: 80%;
+}
+
+
+/* BOTÂO DE FINALIZAR BebidasEmprogresso e BebidasEmProgresso */
+.finish {
+  border-radius: 0;
+  bottom: 0;
+
+}
+
+.finish:disabled {
+  background-color: gray;
+  border-color: gray;
 }
 
 /* Utilizado para que o Link não limite o tamanho do Button */
@@ -38,6 +53,13 @@ iframe {
   width: 80%;
 }
 
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  background-color: black;
+  border: 3px solid black;
+  border-radius: 50%;
+  color: black;
+}
+
 .top-img {
   width: 500px;
 }
@@ -46,7 +68,7 @@ iframe {
   margin-bottom: 20px;
 }
 
-@media screen and ( max-width : 700px ) {
+@media screen and ( max-width : 800px ) {
 
   .detalhes {
     margin: 0;
@@ -64,5 +86,10 @@ iframe {
 
   .top-img {
     width: 100%;
+  }
+
+  .finish {
+    position: fixed;
+    width: 105%;
   }
 }

@@ -1,15 +1,65 @@
 .category-buttons {
+  background-color: gainsboro;
   display: grid;
   gap: 0.1rem;
-  grid-template-columns: repeat(6, minmax(100px, 12.5%));
+  grid-template-columns: repeat(6, minmax(auto, 12%));
   justify-content: center;
   width: 100%;
+}
+
+/* .category-buttons button:hover {
+  background-image: url('../images/Beef-PNG-Images.png');
+  background-position: center;
+  transition: 2s;
+} */
+
+.Chicken-btn:hover, .Chicken-btn:focus {
+  background-image: url('../images/chicken--png.png');
+  background-position: center;
+  background-size: 100%;
+  transition: 2s;
+}
+
+.Beef-btn:hover, .Beef-btn:focus {
+  background-image: url('../images/Beef-PNG-Images.png');
+  background-position: center;
+  background-size: 100%;
+  transition: 2s;
+}
+
+.Breakfast-btn:hover, .Breakfast-btn:hover:focus {
+  background-image: url('../images/Breakfast-PNG-Images.png');
+  background-position: center;
+  background-size: 100%;
+  transition: 2s;
+}
+
+.Dessert-btn:hover, .Dessert-btn:focus {
+  background-image: url('../images/Dessert-PNG.png');
+  background-position: center;
+  background-size: 100%;
+  transition: 2s;
+}
+
+.Goat-btn:hover, .Goat-btn:focus {
+  background-image: url('../images/goat-png.png');
+  background-position: center;
+  background-size: 100%;
+  transition: 2s;
 }
 
 @media screen and ( max-width : 720px ) {
 
   .category-buttons {
     align-items: center;
-    grid-template-columns: 99%;
+    grid-template-columns: repeat(6, minmax(auto, 1fr));
+
+  }
+}
+
+@media screen and ( max-width : 500px ) {
+
+  .category-buttons {
+    grid-template-columns: repeat(3, minmax(auto, 1fr));
   }
 }
