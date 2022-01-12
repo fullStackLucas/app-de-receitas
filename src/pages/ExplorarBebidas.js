@@ -34,7 +34,7 @@ function ExplorarBebidas() {
           obtida através do endpoint https://www.thecocktaildb.com/api/json/v1/1/random.php.>
         */}
         <button
-            className="btn btn-outline-dark explorar-btn"
+          className="btn btn-outline-dark explorar-btn"
           type="button"
           data-testid="explore-surprise"
           onClick={ randomDrink }
