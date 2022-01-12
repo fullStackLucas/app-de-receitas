@@ -16,6 +16,7 @@ export default function FavoriteBtn({ id }) {
 
   return (
     <button
+      className="share-btn btn btn-lg"
       type="button"
       onClick={ () => { setFavoritedItem(item); setFavorite(!favorite); } }
     >

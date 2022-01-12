@@ -27,7 +27,7 @@ export default function ShareBtn({ type, pathname }) { // funcao do componente q
       ) }
       <button
         data-testid="share-btn"
-        className="share-btn"
+        className="share-btn btn btn-lg"
         type="button"
         onClick={ handleClick }
       >

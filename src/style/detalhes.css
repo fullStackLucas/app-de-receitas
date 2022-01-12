@@ -13,6 +13,24 @@
   background-color: gainsboro;
 }
 
+.detail-instruction {
+  margin: 2vh 20vw;
+}
+
+.detail-title {
+  background-color: rgba(233, 146, 31, 0.438);
+  font-size: 4em;
+  margin: 0;
+}
+
+.detail-category {
+  background-color: rgba(233, 146, 31, 0.336);
+}
+
+.detail-h3 {
+  background-color: rgba(233, 146, 31, 0.253);
+}
+
 .iniciar_receita {
   position: fixed;
   width: 100%;
@@ -67,6 +85,12 @@ iframe {
 
 .recommendations {
   margin-bottom: 20px;
+}
+
+.share-btn {
+  background-color: rgba(233, 146, 31, 0.719);
+  margin: 2px;
+  width: 180px;
 }
 
 @media screen and ( max-width : 800px ) {

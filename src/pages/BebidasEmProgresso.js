@@ -47,6 +47,11 @@ function BebidasEmProgresso({ match }) {
 
   return (
     <div className="detalhes">
+      <h1 data-testid="recipe-title" className="detail-title">{item.strDrink}</h1>
+      <h2 data-testid="recipe-category" className="detail-category">
+        { item.strCategory }
+        {' '}
+      </h2>
       {item && (
         <img
           className="top-img"
@@ -55,18 +60,12 @@ function BebidasEmProgresso({ match }) {
           src={ item.strDrinkThumb }
         />
       )}
-
-      <h1 data-testid="recipe-title">{item.strDrink}</h1>
-      <h2 data-testid="recipe-category">
-        { item.strCategory }
-        {' '}
-      </h2>
-
-      <ShareBtn pathname={ item.idDrink } type="bebidas" />
-      <FavoriteBtn id={ id } />
-
+      <div>
+        <ShareBtn pathname={ item.idDrink } type="bebidas" />
+        <FavoriteBtn id={ id } />
+      </div>
       <ul isCheckbox={ false }>
-        Ingredients
+        <h3 className="detail-h3">Ingredients</h3>
         {ingredientes.map((ingrediente, index) => (
           <li
             key={ index }
@@ -89,7 +88,7 @@ function BebidasEmProgresso({ match }) {
           </li>
         ))}
       </ul>
-
+      <h3 className="detail-h3">Modo de Preparo</h3>
       <p data-testid="instructions">
         Instructions
         { item.strInstructions }

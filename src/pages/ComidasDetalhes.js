@@ -43,26 +43,28 @@ function ComidasDetalhes({ match }) {
   return (
     <div>
       <div className="detalhes">
-        <img
-          className="top-img"
-          data-testid="recipe-photo"
-          alt="img"
-          src={ item.strMealThumb }
-        />
-
-        <h1 data-testid="recipe-title">{ item.strMeal }</h1>
-        <h2 data-testid="recipe-category">
+        <h1 data-testid="recipe-title" className="detail-title">{ item.strMeal }</h1>
+        <h2 data-testid="recipe-category" className="detail-category">
           { item.strCategory }
           {' '}
         </h2>
+        <div>
+          <img
+            className="top-img"
+            data-testid="recipe-photo"
+            alt="img"
+            src={ item.strMealThumb }
+          />
+        </div>
+        <div className="datail-buttons">
+          <ShareBtn pathname={ id } type="comidas" />
 
-        <ShareBtn pathname={ id } type="comidas" />
-
-        <FavoriteBtn id={ id } />
+          <FavoriteBtn id={ id } />
+        </div>
 
         { /* isCheckbox={ false }  dentro de ul gerando warning */ }
         <ul>
-          Ingredients
+          <h3 className="detail-h3">Ingredients</h3>
           {ingredientes.map((ingrediente, index) => (
             <li key={ index } data-testid={ `${index}-ingredient-name-and-measure` }>
               {ingrediente[1]}
@@ -72,7 +74,8 @@ function ComidasDetalhes({ match }) {
           ))}
         </ul>
 
-        <p data-testid="instructions">
+        <h3 className="detail-h3">Modo de Preparo</h3>
+        <p data-testid="instructions" className="detail-instruction">
           Instructions
           { item.strInstructions }
         </p>
@@ -83,6 +86,8 @@ function ComidasDetalhes({ match }) {
           width="100%"
           url={ item.strYoutube }
         />
+
+        <h3 className="detail-h3">Recomendações</h3>
         <Recommendations items={ dataDrinks } />
       </div>
       <StartRecipeButton id={ id } type="comidas" />

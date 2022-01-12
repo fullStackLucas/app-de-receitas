@@ -34,30 +34,30 @@ function BebidasDetalhes({ match }) {
   return (
     <div>
       <div className="detalhes">
+        <h1 data-testid="recipe-title" className="detail-title">{ item.strDrink }</h1>
+        <h2 data-testid="recipe-category" className="detail-category">
+          { item.strAlcoholic }
+          {' '}
+        </h2>
         <img
           className="top-img"
           data-testid="recipe-photo"
           alt="img"
           src={ item.strDrinkThumb }
         />
+        <div>
 
-        <h1 data-testid="recipe-title">{ item.strDrink }</h1>
+          <ShareBtn pathname={ id } type="bebidas" />
 
-        <ShareBtn pathname={ id } type="bebidas" />
-
-        <FavoriteBtn id={ id } />
-
-        <p data-testid="recipe-category">
-          { item.strAlcoholic }
-          {' '}
-        </p>
+          <FavoriteBtn id={ id } />
+        </div>
 
         {/*   <ol data-testid="`${index}-ingredient-name-and-measure`">
         ingredientes
       </ol> */}
 
         <ul isCheckbox={ false }>
-          Ingredients
+          <h3 className="detail-h3">Ingredientes</h3>
           {ingredientes && ingredientes.map((ingrediente, index) => {
             console.log(medidas);
             return (
@@ -67,12 +67,14 @@ function BebidasDetalhes({ match }) {
             );
           })}
         </ul>
+        <h3 className="detail-h3">Modo de Preparo</h3>
 
-        <p data-testid="instructions">
+        <p data-testid="instructions" className="detail-instruction">
           {' '}
           { item.strInstructions }
           {' '}
         </p>
+        <h3 className="detail-h3">Recomendações</h3>
 
         <Recommendations items={ dataMeals } />
       </div>
