@@ -20,10 +20,10 @@ function Perfil() {
           title="Perfil"
           btnAvaliable={ false }
         />
-        <p data-testid="profile-email">{email}</p>
-
+        <h1 data-testid="profile-email">{email}</h1>
         <Link to="/receitas-feitas">
           <button
+            className="btn btn-info perfil-btn"
             type="button"
             data-testid="profile-done-btn"
             Receitas
@@ -35,6 +35,7 @@ function Perfil() {
 
         <Link to="/receitas-favoritas">
           <button
+            className="btn btn-info perfil-btn"
             type="button"
             data-testid="profile-favorite-btn"
           >
@@ -44,6 +45,7 @@ function Perfil() {
 
         <Link to="/">
           <button
+            className="btn btn-danger btn-lg btn-block"
             type="button"
             data-testid="profile-logout-btn"
             onClick={ () => localStorage.clear() }

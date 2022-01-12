@@ -1,0 +1,56 @@
+.explorar {
+  position: fixed;
+}
+
+.explorar-btn {
+  font-size: 2em;
+  font-weight: 700;
+  height: 70%;
+  margin: 5%;
+  width: 40%;
+}
+
+.explorar-cmd:hover {
+  background-image: url('../images/goat-png.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transition: 2s;
+}
+
+.explorar-bbd:hover {
+  background-image: url('../images/cocktail.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  transition: 2s;
+}
+
+@media screen and ( max-width : 800px ) {
+
+  .explorar-btn {
+    font-size: 1.2em;
+    font-weight: 700;
+    height: 70%;
+    margin: 1%;
+    width: 45%;
+  }
+
+  .explorar-cmd {
+    background-color: black;
+    background-image: url('../images/goat-png.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 105%;
+    color: white;
+    transition: 2s;
+  }
+
+  .explorar-bbd {
+    background-image: url('../images/cocktail.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: 2s;
+  }
+}

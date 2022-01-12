@@ -1,18 +1,30 @@
 .category-buttons {
-  background-color: gainsboro;
+  background-color: rgb(152, 141, 156);
   display: grid;
-  gap: 0.1rem;
-  grid-template-columns: repeat(6, minmax(auto, 12%));
+
+  /* gap: 0.1rem; */
+  grid-template-columns: repeat(6, minmax(auto, 1fr));
   justify-content: center;
   width: 100%;
 }
 
-/* .category-buttons button:hover {
-  background-image: url('../images/Beef-PNG-Images.png');
-  background-position: center;
-  transition: 2s;
-} */
+.category-buttons button {
+  border: none;
+  border-radius: 0;
+  font-weight: 700;
+}
 
+.category-buttons button:focus {
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: 60%;
+  color: white;
+  font-weight: 700;
+  transition: 3s;
+}
+
+
+/* Botões de comida */
 .Chicken-btn:hover, .Chicken-btn:focus {
   background-image: url('../images/chicken--png.png');
   background-position: center;
@@ -27,7 +39,7 @@
   transition: 2s;
 }
 
-.Breakfast-btn:hover, .Breakfast-btn:hover:focus {
+.Breakfast-btn:hover, .Breakfast-btn:focus {
   background-image: url('../images/Breakfast-PNG-Images.png');
   background-position: center;
   background-size: 100%;
@@ -48,18 +60,61 @@
   transition: 2s;
 }
 
+/* Bebidas buttons */
+.Drink-btn:hover, .Drink-btn:focus {
+  background-image: url('../images/ordinary-drink.png');
+  background-position: center;
+  background-size: 100%;
+  transition: 2s;
+}
+
+.Cocktail-btn:hover, .Cocktail-btn:focus {
+  background-image: url('../images/cocktail.png');
+  background-position: center;
+  background-size: 100%;
+  transition: 2s;
+}
+
+.Shake-btn:hover, .Shake-btn:focus {
+  background-image: url('../images/milk.png');
+  background-position: center;
+  background-size: 90%;
+  transition: 2s;
+}
+
+.Unknown-btn:hover, .Unknown-btn:focus {
+  background-image: url('../images/other-drink.png');
+  background-position: center;
+  background-size: 100%;
+  transition: 2s;
+}
+
+.Cocoa-btn:hover, .Cocoa-btn:focus {
+  background-image: url('../images/cocoa-png.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 80%;
+  transition: 2s;
+}
+
+
 @media screen and ( max-width : 720px ) {
 
   .category-buttons {
     align-items: center;
-    grid-template-columns: repeat(6, minmax(auto, 1fr));
+    grid-template-columns: repeat(3, minmax(auto, 1fr));
 
   }
+
+  .category-buttons button {
+    border: 0.4px solid rgb(201, 200, 200);
+  }
+
 }
 
 @media screen and ( max-width : 500px ) {
 
   .category-buttons {
-    grid-template-columns: repeat(3, minmax(auto, 1fr));
+    grid-template-columns: repeat(2, minmax(auto, 1fr));
   }
 }

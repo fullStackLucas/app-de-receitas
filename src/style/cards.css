@@ -32,6 +32,11 @@
   text-decoration: none;
 }
 
+/* .card:hover {
+  transition: 0.7s;
+  transform: scale(1.01);
+} */
+
 .card_img {
   height: 100%;
   width: 100%;

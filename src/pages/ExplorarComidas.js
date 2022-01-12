@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getRandomComidas } from '../service/GetComidas';
+import '../style/explorar.css';
 
 function ExplorarComidas() {
   const history = useHistory();
@@ -13,7 +14,7 @@ function ExplorarComidas() {
 
   return (
     <>
-      <div className="pages">
+      <div className="pages explorar">
         <Header
           title="Explorar Comidas"
           btnAvaliable={ false }
@@ -21,6 +22,7 @@ function ExplorarComidas() {
 
         <Link to="/explorar/comidas/ingredientes">
           <button
+            className="btn btn-outline-dark explorar-btn"
             type="button"
             data-testid="explore-by-ingredient"
           >
@@ -30,6 +32,7 @@ function ExplorarComidas() {
 
         <Link to="/explorar/comidas/area">
           <button
+            className="btn btn-outline-dark explorar-btn"
             type="button"
             data-testid="explore-by-area"
           >
@@ -42,6 +45,7 @@ function ExplorarComidas() {
       rota muda para a página de detalhes de uma comida aleatória obtida através do
       endpoint https://www.themealdb.com/api/json/v1/1/random.php;> */}
         <button
+          className="btn btn-warning btn-lg btn-block"
           type="button"
           data-testid="explore-surprise"
           onClick={ randomFood }

@@ -50,7 +50,8 @@
 }
 
 iframe {
-  width: 80%;
+  height: 18vw;
+  width: 50%;
 }
 
 .carousel-control-prev-icon, .carousel-control-next-icon {
@@ -80,8 +81,8 @@ iframe {
   }
 
   iframe {
-    height: 240px;
-    width: 320px;
+    height: 50vw;
+    width: 100%;
   }
 
   .top-img {
