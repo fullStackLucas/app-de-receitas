@@ -9,3 +9,5 @@ Lucas Pinheiro - https://github.com/fullStackLucas;
 Vinícius Santana - https://github.com/viniciusantana;
 
 CSS feito majoritariamente por Vinícius Santana;
+
+deploy da aplicação: http://recipes-app-by-group-10.surge.sh/
